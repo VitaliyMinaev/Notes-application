@@ -5,7 +5,6 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\bin\Debug\netstandard2.0\Notes.
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.csproj.AssemblyReference.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.GeneratedMSBuildEditorConfig.editorconfig
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\App.xaml.g.cs
-D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.AssemblyInfoInputs.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.AssemblyInfo.cs
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.csproj.CoreCompileInputs.cache
@@ -13,3 +12,7 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\XamlC.
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.dll
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\ref\Notes.dll
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.pdb
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\NoteAddingPage.xaml.g.cs
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\NotesPage.xaml.g.cs
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\AboutAppPage.xaml.g.cs

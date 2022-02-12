@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Notes.MainPage">
-
+             x:Class="Notes.Views.NotesPage">
     <StackLayout>
-        <Label 
-            Text="Notes application" TextColor="White" BackgroundColor="SlateBlue" FontSize="24"
-            HorizontalTextAlignment="Center" Padding="30, 10, 30, 10">
-        </Label>
-
-        <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" HasUnevenRows="True" ItemSelected="noteList_ItemSelected">
+        <ListView x:Name ="noteList" HasUnevenRows="True" ItemSelected="noteList_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -19,7 +13,7 @@
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate> 
+            </ListView.ItemTemplate>
         </ListView>
 
         <Button Text="+" Font="38"
@@ -30,7 +24,7 @@
                 CornerRadius="30"
                 VerticalOptions="Center"
                 HorizontalOptions="End"
-                BackgroundColor="SlateBlue"
+                BackgroundColor="DodgerBlue"
                 Margin="30, 30, 20, 20"
                 Padding="10, 0, 10, 0">
         </Button>
