@@ -6,36 +6,51 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Notes.Model;
+using Notes.ViewModel;
 
 namespace Notes.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotesPage : ContentPage
     {
-        public NotesModel Notes { get; set; }
         public NotesPage()
         {
             InitializeComponent();
-
-            Notes = new NotesModel();
-
-            Notes.AddNote(new Note { Title = "Item 1", Text = "Item 1 text", CreationDate = DateTime.Now });
-            Notes.AddNote(new Note { Title = "Item 2", Text = "Item 2 text", CreationDate = DateTime.Now });
-            Notes.AddNote(new Note { Title = "Item 3", Text = "Item 3 text", CreationDate = DateTime.Now });
         }
+
         protected override void OnAppearing()
         {
-            noteList.ItemsSource = Notes;
+            base.OnAppearing();
         }
 
         private async void ButtonClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(NoteAddingPage));
+            await Navigation.PushAsync(new NoteAddingPage());
         }
 
-        private void noteList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void TapGestureRecognizer_Tapped_Edit(object sender, EventArgs e)
         {
-            
+            var tappedEventsArgs = (TappedEventArgs)e;
+
+            var noteChange = ((NotesListViewModel)BindingContext).Notes.Where(note => note.NoteId == (int)tappedEventsArgs.Parameter)
+                .FirstOrDefault();
+
+            await Navigation.PushAsync(new NoteAddingPage(noteChange));
+        }
+
+        private async void TapGestureRecognizer_Tapped_Remove(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                var tappedEventsArgs = (TappedEventArgs)e;
+
+                var notes = ((NotesListViewModel)BindingContext).Notes;
+
+                var noteToRemove = notes.Where(note => note.NoteId == (int)tappedEventsArgs.Parameter)
+                    .FirstOrDefault();
+
+                notes.Remove(noteToRemove);
+            });
         }
     }
 }

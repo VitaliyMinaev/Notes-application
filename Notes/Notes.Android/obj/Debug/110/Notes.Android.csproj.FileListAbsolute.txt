@@ -576,3 +576,9 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\stamp\_Ge
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\aboutappicon.jpg
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\noteicon.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\edit.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\trash.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\bigtrash.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\bigedit.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\mediumtrash.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\mediumedit.png

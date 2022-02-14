@@ -1,17 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Notes.Views.NoteAddingPage">
+             x:Class="Notes.Views.NoteAddingPage"
+             xmlns:local="clr-namespace:Notes.ViewModel"
+             Title="Add new note">
+
+    <ContentPage.BindingContext>
+        <local:NoteAddingViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Title" TextColor="Black"/>
-            <Entry Placeholder="Text" TextColor="Black"/>
-            <Entry Placeholder="Current date" TextColor="Black"/>
+            <Label Text="Enter data for the new note: " FontSize="24" Margin="0, 10"/>
+            
+            <Entry Placeholder="Title" TextColor="Black" Text="{Binding AddingNote.Title}"/>
+            <Entry Placeholder="Text" TextColor="Black" Text="{Binding AddingNote.Text}"/>
+            <Entry Placeholder="Current date" TextColor="Black" Text="{Binding AddingNote.CreationDate}"/>
 
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Save" Margin="100, 0, 10,30"/>
-                <Button Text="Cancel" Margin="10, 0,30,30"/>
-            </StackLayout>
+            <Button Text="Save" Command="{Binding AddNoteCommand}" Clicked="ButtonSave_Clicked" 
+                        HorizontalOptions="Fill"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
