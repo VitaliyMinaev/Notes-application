@@ -7,6 +7,11 @@
             <Entry Placeholder="Title" TextColor="Black"/>
             <Entry Placeholder="Text" TextColor="Black"/>
             <Entry Placeholder="Current date" TextColor="Black"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" Margin="100, 0, 10,30"/>
+                <Button Text="Cancel" Margin="10, 0,30,30"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
