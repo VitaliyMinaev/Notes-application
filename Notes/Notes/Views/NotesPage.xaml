@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Notes.ViewModel"
              x:Class="Notes.Views.NotesPage"
-             Title="Your notes">
+             Title="Custom notes">
 
     <ContentPage.BindingContext>
         <local:NotesListViewModel/>
@@ -21,8 +21,8 @@
                                 <ColumnDefinition Width="0*"/>
                             </Grid.ColumnDefinitions>
                             
-                            <Label Text="{Binding Title}" Grid.Column="0" Grid.ColumnSpan="4" FontSize="22" TextColor="Black" Margin="10, 0"/>
-                            <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="18" TextColor="Gray"
+                            <Label Text="{Binding Title}" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" TextColor="Black" Margin="10, 0"/>
+                            <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="16" TextColor="Gray"
                                    Margin="10, 0"  Grid.ColumnSpan="4"/>
 
                             <Image Source="BigEdit.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 0">
@@ -45,7 +45,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="Add" Font="18"
+        <Button Text="+" Font="28"
                 TextColor="White"
                 Clicked="ButtonClicked" 
                 WidthRequest="60"

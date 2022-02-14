@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Notes.Views.AboutAppPage">
+             x:Class="Notes.Views.AboutAppPage"
+             Title="About application">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Notes application" FontSize="24"
+            <Label Text="Made by Vitaliy" FontSize="24" TextColor="Black"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

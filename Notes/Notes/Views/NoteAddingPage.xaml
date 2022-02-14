@@ -11,14 +11,22 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Enter data for the new note: " FontSize="24" Margin="0, 10"/>
+            <Label Text="Enter data for the new note: " FontSize="24" Margin="10, 10" TextColor="Black"/>
             
-            <Entry Placeholder="Title" TextColor="Black" Text="{Binding AddingNote.Title}"/>
-            <Entry Placeholder="Text" TextColor="Black" Text="{Binding AddingNote.Text}"/>
-            <Entry Placeholder="Current date" TextColor="Black" Text="{Binding AddingNote.CreationDate}"/>
+            <Entry Placeholder="Title" TextColor="Black" Text="{Binding AddingNote.Title}"
+                   Margin="10, 0" PlaceholderColor="Gray"/>
+            <BoxView HeightRequest="3" BackgroundColor="Gray" Margin="13, -15"/>
+            
+            <Editor Placeholder="Text" TextColor="Black" Text="{Binding AddingNote.Text}"
+                   Margin="10, 10" PlaceholderColor="Gray" HeightRequest="180"/>
+            <BoxView HeightRequest="3" BackgroundColor="Gray" Margin="13, -25"/>
+
+            <Entry Placeholder="Current date" TextColor="Black" Text="{Binding AddingNote.CreationDate}"
+                   Margin="10, 15" PlaceholderColor="Gray"/>
+            <BoxView HeightRequest="3" BackgroundColor="Gray" Margin="13, -30"/>
 
             <Button Text="Save" Command="{Binding AddNoteCommand}" Clicked="ButtonSave_Clicked" 
-                        HorizontalOptions="Fill"/>
+                        HorizontalOptions="Fill" Margin="10, 40"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
