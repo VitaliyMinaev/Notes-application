@@ -22,7 +22,7 @@
                             </Grid.ColumnDefinitions>
                             
                             <Label Text="{Binding Title}" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" TextColor="Black" Margin="10, 0"/>
-                            <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="16" TextColor="Gray"
+                            <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="15" TextColor="Gray"
                                    Margin="10, 0"  Grid.ColumnSpan="4"/>
 
                             <Image Source="BigEdit.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 0">

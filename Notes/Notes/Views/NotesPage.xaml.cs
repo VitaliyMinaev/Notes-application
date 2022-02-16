@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Notes.Model;
 using Notes.ViewModel;
+using System.Collections.ObjectModel;
 
 namespace Notes.Views
 {
@@ -32,7 +33,8 @@ namespace Notes.Views
         {
             var tappedEventsArgs = (TappedEventArgs)e;
 
-            var noteChange = ((NotesListViewModel)BindingContext).Notes.Where(note => note.NoteId == (int)tappedEventsArgs.Parameter)
+            var notes = ((NotesListViewModel)BindingContext).Notes;
+            var noteChange = notes.Where(note => note.NoteId == (int)tappedEventsArgs.Parameter)
                 .FirstOrDefault();
 
             await Navigation.PushAsync(new NoteAddingPage(noteChange));
@@ -40,17 +42,21 @@ namespace Notes.Views
 
         private async void TapGestureRecognizer_Tapped_Remove(object sender, EventArgs e)
         {
-            await Task.Run(() =>
-            {
-                var tappedEventsArgs = (TappedEventArgs)e;
+            bool result = await DisplayAlert("Delete note", "Are you sure?", "Yes", "No");
 
-                var notes = ((NotesListViewModel)BindingContext).Notes;
+            if (result == false)
+                return;
 
-                var noteToRemove = notes.Where(note => note.NoteId == (int)tappedEventsArgs.Parameter)
-                    .FirstOrDefault();
+            var tappedEventsArgs = (TappedEventArgs)e;
 
-                notes.Remove(noteToRemove);
-            });
+            var notes = ((NotesListViewModel)BindingContext).Notes;
+
+            var noteToRemove = notes.Where(note => note.NoteId == (int)tappedEventsArgs.Parameter)
+                .FirstOrDefault();
+
+            notes.Remove(noteToRemove);
+
+            App.NotesDataBase.RemoveAsync(noteToRemove);
         }
     }
 }

@@ -1,3 +1,9 @@
+Notes.Droid.CustomEditorRenderer, Notes.Android;crc64888fdb5329cc14ba.CustomEditorRenderer
+Notes.Droid.CustomEditorRenderer;crc64888fdb5329cc14ba.CustomEditorRenderer
+notes.droid.CustomEditorRenderer;crc64888fdb5329cc14ba.CustomEditorRenderer
+Notes.Droid.CustomEntryRenderer, Notes.Android;crc64888fdb5329cc14ba.CustomEntryRenderer
+Notes.Droid.CustomEntryRenderer;crc64888fdb5329cc14ba.CustomEntryRenderer
+notes.droid.CustomEntryRenderer;crc64888fdb5329cc14ba.CustomEntryRenderer
 Notes.Droid.MainActivity, Notes.Android;crc64888fdb5329cc14ba.MainActivity
 Notes.Droid.MainActivity;crc64888fdb5329cc14ba.MainActivity
 notes.droid.MainActivity;crc64888fdb5329cc14ba.MainActivity

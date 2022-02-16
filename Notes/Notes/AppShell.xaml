@@ -17,7 +17,7 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Notes" Icon="NoteIcon.png">
+    <FlyoutItem Title="Notes" Icon="note.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:NotesPage}">
         </ShellContent>

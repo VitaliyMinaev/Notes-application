@@ -3,30 +3,70 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.NoteAddingPage"
              xmlns:local="clr-namespace:Notes.ViewModel"
+             xmlns:controls="clr-namespace:Notes.CustomItems"
              Title="Add new note">
 
     <ContentPage.BindingContext>
         <local:NoteAddingViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightGreenColor">#2FA999</Color>
+            <Color x:Key="BorderColor">#D8D8D8</Color>
+
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#666666" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="44"></Setter>
+                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Enter data for the new note: " FontSize="24" Margin="10, 10" TextColor="Black"/>
-            
-            <Entry Placeholder="Title" TextColor="Black" Text="{Binding AddingNote.Title}"
-                   Margin="10, 0" PlaceholderColor="Gray"/>
-            <BoxView HeightRequest="3" BackgroundColor="Gray" Margin="13, -15"/>
-            
-            <Editor Placeholder="Text" TextColor="Black" Text="{Binding AddingNote.Text}"
-                   Margin="10, 10" PlaceholderColor="Gray" HeightRequest="180"/>
-            <BoxView HeightRequest="3" BackgroundColor="Gray" Margin="13, -25"/>
 
-            <Entry Placeholder="Current date" TextColor="Black" Text="{Binding AddingNote.CreationDate}"
-                   Margin="10, 15" PlaceholderColor="Gray"/>
-            <BoxView HeightRequest="3" BackgroundColor="Gray" Margin="13, -30"/>
+        <Frame HasShadow="True" CornerRadius="35" BorderColor="{StaticResource BorderColor}" 
+               BackgroundColor="#F7F7F7" Margin="15, 10, 15, 10">
+            <StackLayout>
+                <Label Style="{StaticResource LableStyle}" Text="Title" Margin="3, 0"/>
+                
+                <Frame Style="{StaticResource FrameStyle}">
+                    <controls:CustomEntry Style="{StaticResource EntryStyle}"
+                                          Text="{Binding AddingNote.Title}" TextColor="Black"
+                                          Margin="2, 0, 0, -5" FontSize="18"/>
+                </Frame>
+                
+                <Label Style="{StaticResource LableStyle}" Text="Text" Margin="3, 0"/>
+                
+                <Frame Style="{StaticResource FrameStyle}">
+                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="260" TextColor="Black"
+                                           Margin="2, 0"/>
+                </Frame>
 
-            <Button Text="Save" Command="{Binding AddNoteCommand}" Clicked="ButtonSave_Clicked" 
-                        HorizontalOptions="Fill" Margin="10, 40"/>
-        </StackLayout>
+                <Label Style="{StaticResource LableStyle}" Text="Creation date" Margin="3, 0"/>
+                
+                <Frame Style="{StaticResource FrameStyle}">
+                    <controls:CustomEntry Style="{StaticResource EntryStyle}"
+                                          Text="{Binding AddingNote.CreationDate}"
+                                          Margin="2, 1, 0, -5" TextColor="DimGray" FontSize="18"/>
+                </Frame>
+
+                <Button Text="Save" Command="{Binding AddNoteCommand}" Clicked="ButtonSave_Clicked" 
+                        HorizontalOptions="Fill" Margin="10, 20"
+                        BorderColor="{StaticResource BorderColor}"
+                        BorderRadius="5"
+                        BorderWidth="1" CornerRadius="15"/>
+            </StackLayout>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>
