@@ -1,11 +1,8 @@
 ﻿using Notes.Model;
 using Notes.Views;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Notes.ViewModel
@@ -15,55 +12,60 @@ namespace Notes.ViewModel
         public ObservableCollection<Note> Notes { get; set; }
 
         public Note AddingNote { get; set; }
-        public Note SelectedNote { get; set; }
-
-        public ICommand AddNoteCommand => new Command(AddNote);
-        public ICommand RemoveNoteCommand => new Command(RemoveNote);
 
         public NotesListViewModel()
         {
-            Notes = new ObservableCollection<Note>(GetNotes());
+            List<Note> notes = GetNotesFromDataBase();
+            Notes = new ObservableCollection<Note>(notes);
 
-            MessagingCenter.Subscribe<NoteAddingPage, Note>(this, nameof(NoteAddingPage), (page, note) =>
-            {
-                if(note.NoteId == -1)
-                {
-                    // if we add note
-                    note.NoteId = App.NotesDataBase.GetLastIndexAsync() + 1;
-                    App.NotesDataBase.AddAsync(note);
-
-                    Notes.Add(note);
-                }
-                else
-                {
-                    // If we change note
-                    Note noteToEdit = Notes.Where(n => n.NoteId == note.NoteId).FirstOrDefault();
-
-                    int newIndex = Notes.IndexOf(noteToEdit);
-                    Notes.Remove(noteToEdit);
-
-                    Notes.Add(note);
-
-                    int oldIndex = Notes.IndexOf(note);
-
-                    Notes.Move(oldIndex, newIndex);
-
-                    App.NotesDataBase.UpdateAsync(note);
-                }
-            });
+            SubscribeToMessageCenter();
         }
 
-        private List<Note> GetNotes()
+        private List<Note> GetNotesFromDataBase()
         {
             var taskList = App.NotesDataBase.GetNotesAsync();
 
             return taskList.Result;
         }
 
-        public void AddNote()
+        private void SubscribeToMessageCenter()
         {
-            Notes.Add(AddingNote);
+            MessagingCenter.Subscribe<NoteAddingPage, Note>(this, nameof(NoteAddingPage), (page, note) =>
+            {
+                if (note.NoteId == -1)
+                    AddNote(note);
+                else
+                    ChangeNote(note);
+            });
         }
-        public void RemoveNote() => Notes.Remove(SelectedNote);
+
+        private void AddNote(Note note)
+        {
+            note.NoteId = App.NotesDataBase.GetLastIndexAsync() + 1;
+            App.NotesDataBase.AddAsync(note);
+
+            Notes.Add(note);
+        }
+
+        private void ChangeNote(Note note)
+        {
+            // Select note which we need to change
+            Note noteToEdit = Notes.Where(n => n.NoteId == note.NoteId).FirstOrDefault();
+
+            // Get old note's index
+            int newIndex = Notes.IndexOf(noteToEdit);
+            Notes.Remove(noteToEdit);
+
+            // Add already changed note
+            Notes.Add(note);
+
+            int oldIndex = Notes.IndexOf(note);
+
+            // Insert note into old note's place
+            Notes.Move(oldIndex, newIndex);
+
+            // Add note into data base
+            App.NotesDataBase.UpdateAsync(note);
+        }
     }
 }

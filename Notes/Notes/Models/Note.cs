@@ -1,7 +1,5 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Notes.Model
 {
@@ -28,10 +26,6 @@ namespace Notes.Model
             Title = title;
             Text = text;
             CreationDate = date;
-        }
-        public override string ToString()
-        {
-            return $"{Title}; {Text}; {CreationDate}";
         }
     }
 }

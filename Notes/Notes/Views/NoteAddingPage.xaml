@@ -50,7 +50,7 @@
                 <Label Style="{StaticResource LableStyle}" Text="Text" Margin="3, 0"/>
                 
                 <Frame Style="{StaticResource FrameStyle}">
-                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="380" TextColor="Black"
+                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="220" TextColor="Black"
                                            Margin="2, 0"
                                            Keyboard="Text"/>
                 </Frame>
@@ -63,7 +63,7 @@
                                           Margin="2, 1, 0, -5" TextColor="DimGray" FontSize="18"/>
                 </Frame>
 
-                <Button Text="Save" Command="{Binding AddNoteCommand}" Clicked="ButtonSave_Clicked" 
+                <Button Text="Save" Clicked="ButtonSave_Clicked" 
                         HorizontalOptions="Fill" Margin="10, 20"
                         BorderColor="{StaticResource BorderColor}"
                         BorderRadius="5"

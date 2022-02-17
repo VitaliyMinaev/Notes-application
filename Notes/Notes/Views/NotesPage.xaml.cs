@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Notes.Model;
 using Notes.ViewModel;
-using System.Collections.ObjectModel;
 
 namespace Notes.Views
 {
@@ -17,11 +12,6 @@ namespace Notes.Views
         public NotesPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
         }
 
         private async void ButtonClicked(object sender, EventArgs e)
