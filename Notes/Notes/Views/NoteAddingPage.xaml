@@ -43,14 +43,16 @@
                 <Frame Style="{StaticResource FrameStyle}">
                     <controls:CustomEntry Style="{StaticResource EntryStyle}"
                                           Text="{Binding AddingNote.Title}" TextColor="Black"
-                                          Margin="2, 0, 0, -5" FontSize="18"/>
+                                          Margin="2, 0, 0, -5" FontSize="18"
+                                          Keyboard="Text"/>
                 </Frame>
                 
                 <Label Style="{StaticResource LableStyle}" Text="Text" Margin="3, 0"/>
                 
                 <Frame Style="{StaticResource FrameStyle}">
-                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="260" TextColor="Black"
-                                           Margin="2, 0"/>
+                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="380" TextColor="Black"
+                                           Margin="2, 0"
+                                           Keyboard="Text"/>
                 </Frame>
 
                 <Label Style="{StaticResource LableStyle}" Text="Creation date" Margin="3, 0"/>

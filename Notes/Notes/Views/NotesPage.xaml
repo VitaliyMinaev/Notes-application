@@ -11,7 +11,8 @@
 
     <StackLayout>
         <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
-                  SelectionMode="Single" HasUnevenRows="True" SelectedItem="{Binding SelectedNote}">
+                  SelectionMode="Single" HasUnevenRows="True" SelectedItem="{Binding SelectedNote}"
+                  SeparatorColor="Gray">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -20,7 +21,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="0*"/>
                             </Grid.ColumnDefinitions>
-                            
+
                             <Label Text="{Binding Title}" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" TextColor="Black" Margin="10, 0"/>
                             <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="15" TextColor="Gray"
                                    Margin="10, 0"  Grid.ColumnSpan="4"/>
