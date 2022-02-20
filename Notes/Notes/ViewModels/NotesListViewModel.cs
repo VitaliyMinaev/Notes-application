@@ -37,6 +37,11 @@ namespace Notes.ViewModel
                 else
                     ChangeNote(note);
             });
+
+            MessagingCenter.Subscribe<BasketPage, Note>(this, nameof(BasketPage), (page, note) =>
+            {
+                 AddNote(note);
+            });
         }
 
         private void AddNote(Note note)

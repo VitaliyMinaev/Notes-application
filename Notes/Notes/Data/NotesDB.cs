@@ -8,23 +8,13 @@ namespace Notes.Data
 {
     public class NotesDB : IDate
     {
-        private static NotesDB instance;
-
         private readonly SQLiteAsyncConnection dataBase;
 
-        NotesDB(string connectionString)
+        public NotesDB(string connectionString)
         {
             dataBase = new SQLiteAsyncConnection(connectionString);
 
             dataBase.CreateTableAsync<Note>().Wait();
-        }
-
-        public static NotesDB Initialize(string connectionString)
-        {
-            if (instance == null)
-                instance = new NotesDB(connectionString);
-
-            return instance;
         }
 
         public void RemoveAsync(Note note)
@@ -35,6 +25,10 @@ namespace Notes.Data
         public void RemoveAsync(int index)
         {
             dataBase.DeleteAsync<Note>(index);
+        }
+        public async void RemoveAllAsync()
+        {
+            await dataBase.DeleteAllAsync<Note>();
         }
 
         public Task<List<Note>> GetNotesAsync()

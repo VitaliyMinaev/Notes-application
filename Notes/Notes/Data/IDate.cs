@@ -13,6 +13,7 @@ namespace Notes.Data
 
         void RemoveAsync(Note note);
         void RemoveAsync(int index);
+        void RemoveAllAsync();
 
         int GetLastIndexAsync();
     }

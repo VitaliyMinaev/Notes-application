@@ -27,4 +27,9 @@
             ContentTemplate="{DataTemplate views:AboutAppPage}">
         </ShellContent>
     </FlyoutItem>
+    <FlyoutItem Title="Basket" Icon="recycle.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:BasketPage}">
+        </ShellContent>
+    </FlyoutItem>
 </Shell>

@@ -11,7 +11,7 @@
 
     <StackLayout>
         <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
-                  SelectionMode="Single" HasUnevenRows="True" SelectedItem="{Binding SelectedNote}"
+                  SelectionMode="Single" HasUnevenRows="True" 
                   SeparatorColor="Gray">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -55,7 +55,6 @@
                 VerticalOptions="Center"
                 HorizontalOptions="End"
                 BackgroundColor="DodgerBlue"
-                Margin="30, 5, 20, 20"
-                Padding="10, 0, 10, 0"/>
+                Margin="0, 0, 10, 10"/>
     </StackLayout>
 </ContentPage>

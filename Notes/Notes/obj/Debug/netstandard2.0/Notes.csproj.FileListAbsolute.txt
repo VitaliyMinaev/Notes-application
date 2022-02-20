@@ -21,3 +21,4 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\bin\Debug\netstandard2.0\FormsV
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\bin\Debug\netstandard2.0\Xamarin.Forms.Platform.Android.pdb
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\bin\Debug\netstandard2.0\FormsViewGroup.pdb
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.csproj.CopyComplete
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\BasketPage.xaml.g.cs

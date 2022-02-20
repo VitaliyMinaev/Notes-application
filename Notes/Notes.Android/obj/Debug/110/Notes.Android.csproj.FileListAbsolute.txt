@@ -566,13 +566,9 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\stamp\_Ge
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\aboutappicon.jpg
-D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\noteicon.png
-D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\edit.png
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\trash.png
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\bigtrash.png
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\bigedit.png
-D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\mediumtrash.png
-D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\mediumedit.png
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\46\jl\files.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\52\jl\files.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\56\jl\files.cache
@@ -593,3 +589,11 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\android\a
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\android\src\crc64888fdb5329cc14ba\CustomEntryRenderer.java
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\android\src\crc64888fdb5329cc14ba\CustomEditorRenderer.java
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\note.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\upload.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\recycle.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\noteiconapp.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\mipmap-hdpi\noteiconapp.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\mipmap-mdpi\noteiconapp.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\mipmap-xhdpi\noteiconapp.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\mipmap-xxhdpi\noteiconapp.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\mipmap-xxxhdpi\noteiconapp.png

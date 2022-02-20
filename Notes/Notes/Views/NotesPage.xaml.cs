@@ -30,13 +30,8 @@ namespace Notes.Views
             await Navigation.PushAsync(new NoteAddingPage(noteChange));
         }
 
-        private async void TapGestureRecognizer_Tapped_Remove(object sender, EventArgs e)
+        private void TapGestureRecognizer_Tapped_Remove(object sender, EventArgs e)
         {
-            bool result = await DisplayAlert("Delete note", "Are you sure?", "Yes", "No");
-
-            if (result == false)
-                return;
-
             var tappedEventsArgs = (TappedEventArgs)e;
 
             var notes = ((NotesListViewModel)BindingContext).Notes;
@@ -47,6 +42,7 @@ namespace Notes.Views
             notes.Remove(noteToRemove);
 
             App.NotesDataBase.RemoveAsync(noteToRemove);
+            MessagingCenter.Send(this, nameof(NotesPage), noteToRemove);
         }
     }
 }

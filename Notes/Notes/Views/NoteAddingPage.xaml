@@ -50,7 +50,7 @@
                 <Label Style="{StaticResource LableStyle}" Text="Text" Margin="3, 0"/>
                 
                 <Frame Style="{StaticResource FrameStyle}">
-                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="220" TextColor="Black"
+                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="390" TextColor="Black"
                                            Margin="2, 0"
                                            Keyboard="Text"/>
                 </Frame>

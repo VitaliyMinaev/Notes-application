@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Notes.ViewModel"
+             x:Class="Notes.Views.BasketPage"
+             Title="Basket">
+
+    <ContentPage.BindingContext>
+        <local:BasketNoteViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name ="basketList" SelectionMode="Single" HasUnevenRows="True"
+                  SeparatorColor="Gray" ItemsSource="{Binding BasketNotes}">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="0, 6, 0, 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Title}" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" TextColor="Black" Margin="10, 0"/>
+                                <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="15" TextColor="Gray"
+                                   Margin="10, 0"  Grid.ColumnSpan="4"/>
+
+                                <Image Source="upload.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Tapped_Upload"
+                                                          CommandParameter="{Binding NoteId}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Delete all" CornerRadius="30" Margin="20" Font="16" Clicked="Button_Clicked"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
