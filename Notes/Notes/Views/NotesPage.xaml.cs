@@ -42,6 +42,7 @@ namespace Notes.Views
             notes.Remove(noteToRemove);
 
             App.NotesDataBase.RemoveAsync(noteToRemove);
+
             MessagingCenter.Send(this, nameof(NotesPage), noteToRemove);
         }
     }

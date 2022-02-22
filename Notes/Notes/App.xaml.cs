@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Notes.Data;
 using System.IO;
+using Notes.Views;
+using Notes.ViewModel;
 
 namespace Notes
 {
@@ -10,7 +12,7 @@ namespace Notes
         // Set the path to data base
         private static NotesDB notesDataBase;
         private static NotesDB basketDataBase;
-
+        private BasketPage basket;
         public static NotesDB NotesDataBase
         {
             get
@@ -38,6 +40,7 @@ namespace Notes
         {
             InitializeComponent();
 
+            basket = new BasketPage();
             MainPage = new AppShell();
         }
     }

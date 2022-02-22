@@ -1,9 +1,8 @@
 ﻿using Notes.Model;
 using Notes.Views;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Notes.ViewModel
@@ -21,20 +20,23 @@ namespace Notes.ViewModel
             SubscribeToMessageCenter();
         }
 
-        private void SubscribeToMessageCenter()
+        public void SubscribeToMessageCenter()
         {
             MessagingCenter.Subscribe<NotesPage, Note>(this, nameof(NotesPage), (page, note) =>
             {
-                AddNote(note);
+                AddNoteAsync(note);
             });
         }
 
-        private void AddNote(Note note)
+        private async void AddNoteAsync(Note note)
         {
-            note.NoteId = App.BasketDataBase.GetLastIndexAsync() + 1;
+            await Task.Run(() =>
+            {
+                note.NoteId = App.BasketDataBase.GetLastIndexAsync() + 1;
 
-            BasketNotes.Add(note);
-            App.BasketDataBase.AddAsync(note);
+                BasketNotes.Add(note);
+                App.BasketDataBase.AddAsync(note);
+            });
         }
     }
 }

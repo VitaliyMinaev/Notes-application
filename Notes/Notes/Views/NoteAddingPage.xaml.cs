@@ -14,6 +14,7 @@ namespace Notes.Views
             if (note != null)
                 ((NoteAddingViewModel)BindingContext).AddingNote = note;
         }
+
         private async void ButtonSave_Clicked(object sender, EventArgs e)
         {
             Note note = ((NoteAddingViewModel)BindingContext).AddingNote;

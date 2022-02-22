@@ -2,6 +2,8 @@
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Notes.Views;
+using Notes.ViewModel;
 
 namespace Notes.Droid
 {
@@ -14,6 +16,7 @@ namespace Notes.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

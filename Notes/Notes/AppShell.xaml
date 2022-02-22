@@ -2,8 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.AppShell"
-       xmlns:views="clr-namespace:Notes.Views" 
-       Title="Test 1">
+       xmlns:views="clr-namespace:Notes.Views">
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
@@ -12,7 +11,7 @@
                        FontSize="24"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center" />
+                       VerticalTextAlignment="Center"/>
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
