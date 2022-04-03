@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Notes.Model;
 using Notes.ViewModel;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace Notes.Views
 {
@@ -22,6 +23,25 @@ namespace Notes.Views
             MessagingCenter.Send(this, nameof(NoteAddingPage), note);
 
             await Navigation.PopAsync();
+        }
+        private async void SelectColorButton_Clicted(object sender, EventArgs e)
+        {
+            var result = await Navigation.ShowPopupAsync(new ColorPopup());
+
+            if (result == null)
+                return;
+
+            Color color = (Color)result;
+
+            Note colorNote = ((NoteAddingViewModel)BindingContext).AddingNote;
+
+            colorNote.R = color.R;
+            colorNote.G = color.G;
+            colorNote.B = color.B;
+
+            colorNote.Color = color;
+
+            CollorButton.BackgroundColor = color;
         }
     }
 }

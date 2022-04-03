@@ -22,6 +22,12 @@ namespace Notes.ViewModel
 
         public void SubscribeToMessageCenter()
         {
+            MessagingCenter.Subscribe<BasketPage>(this, nameof(BasketNoteViewModel), (page) =>
+            {
+                foreach (var colorNote in BasketNotes)
+                    colorNote.Color = Color.FromRgb(colorNote.R, colorNote.G, colorNote.B);
+            });
+
             MessagingCenter.Subscribe<NotesPage, Note>(this, nameof(NotesPage), (page, note) =>
             {
                 AddNoteAsync(note);

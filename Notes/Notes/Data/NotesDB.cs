@@ -13,7 +13,7 @@ namespace Notes.Data
         public NotesDB(string connectionString)
         {
             dataBase = new SQLiteAsyncConnection(connectionString);
-
+            
             dataBase.CreateTableAsync<Note>().Wait();
         }
 

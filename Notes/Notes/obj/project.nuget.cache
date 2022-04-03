@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GQVJld4laQHLMqfBmiSlw88mpUV+JZxuhjSxgJMz6iqMkixRTUwj2QLAt9zHExD1USn/UL0KAcz4ryOxOA1ezw==",
+  "dgSpecHash": "fSAOw7vC13CGpkA71DqFkEpu/YbYE+TPUZ3TlXJweKXeaFKmxUWSdUd6y7TnyOPBglClO+m1A4ng1UPUMy/8Kw==",
   "success": true,
   "projectFilePath": "D:\\C#\\Lessons\\Xamarin projects\\Notes\\Notes\\Notes\\Notes.csproj",
   "expectedPackageFiles": [
@@ -14,7 +14,11 @@
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.7.0\\system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512",
+    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
+    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
+    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\xamarin.communitytoolkit\\2.0.1\\xamarin.communitytoolkit.2.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\xamarin.essentials\\1.7.1\\xamarin.essentials.1.7.1.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\xamarin.forms\\5.0.0.2337\\xamarin.forms.5.0.0.2337.nupkg.sha512"
   ],

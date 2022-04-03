@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:views="clr-namespace:Notes.Views" 
+             x:DataType="views:ColorPopup"
+             x:Class="Notes.Views.ColorPopup"
+             Size="340, 380"
+             BackgroundColor="AliceBlue"
+             xct:CornerRadiusEffect.CornerRadius="35">
+
+    <ContentView BindingContext="local:ColorPopup">
+        <ContentView.Resources>
+            <ResourceDictionary>
+                <Style x:Key="ButtonStyle" TargetType="Button">
+                    <Setter Property="WidthRequest" Value="50"/>
+                    <Setter Property="HeightRequest" Value="50"/>
+                    <Setter Property="CornerRadius" Value="25"/>
+                    <Setter Property="Margin" Value="2, 0, 5, 2"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentView.Resources>
+        
+        <StackLayout>
+
+            <Label Text="Select a Color" TextColor="Black" FontSize="24" Margin="10"/>
+
+            <Grid Margin="20, 0, 20, 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="0"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Aqua"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="1"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Black"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="2"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Blue"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="3"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Coral"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="4"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Cornsilk"/>
+
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="1" Grid.Column="0"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkGoldenrod"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="1" Grid.Column="1"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkOrange"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="1" Grid.Column="2"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Crimson"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="1" Grid.Column="3"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkMagenta"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="1" Grid.Column="4"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkOliveGreen"/>
+
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="2" Grid.Column="0"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkOrchid"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="2" Grid.Column="1"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkRed"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="2" Grid.Column="2"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkSeaGreen"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="2" Grid.Column="3"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DarkViolet"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="2" Grid.Column="4"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DeepPink"/>
+
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="3" Grid.Column="0"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DeepSkyBlue"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="3" Grid.Column="1"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DimGray"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="3" Grid.Column="2"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="DodgerBlue"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="3" Grid.Column="3"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Firebrick"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="3" Grid.Column="4"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="FloralWhite"/>
+
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="4" Grid.Column="0"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Green"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="4" Grid.Column="1"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Gold"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="4" Grid.Column="2"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="LightPink"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="4" Grid.Column="3"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="Lime"/>
+                <Button Style="{StaticResource ButtonStyle}" Grid.Row="4" Grid.Column="4"
+                        Clicked="ButtonColor_Clicked"
+                        BackgroundColor="HotPink"/>
+            </Grid>
+        </StackLayout>
+    </ContentView>
+</xct:Popup>

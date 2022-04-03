@@ -14,6 +14,11 @@ namespace Notes.Views
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Send(this, nameof(BasketNoteViewModel));
+        }
+
         private void Tapped_Upload(object sender, EventArgs e)
         {
             var tappedEventsArgs = (TappedEventArgs)e;

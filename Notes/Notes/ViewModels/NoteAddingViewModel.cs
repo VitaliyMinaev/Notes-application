@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Notes.Model;
+using Notes.Views;
+using Xamarin.Forms;
 
 namespace Notes.ViewModel
 {

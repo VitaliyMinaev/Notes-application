@@ -19,7 +19,7 @@ namespace Notes
             {
                 if(notesDataBase == null)
                     notesDataBase = new NotesDB(Path.Combine(Environment.GetFolderPath
-                        (Environment.SpecialFolder.LocalApplicationData), "NotesDataBaseV2.db3"));
+                        (Environment.SpecialFolder.LocalApplicationData), "NotesDataBase.db3"));
 
                 return notesDataBase;
             }

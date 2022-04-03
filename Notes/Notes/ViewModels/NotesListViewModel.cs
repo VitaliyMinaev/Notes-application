@@ -30,6 +30,17 @@ namespace Notes.ViewModel
 
         private void SubscribeToMessageCenter()
         {
+            MessagingCenter.Subscribe<NotesPage>(this, nameof(NotesPage), (page) =>
+            {
+                foreach (var colorNote in Notes)
+                    colorNote.Color = Color.FromRgb(colorNote.R, colorNote.G, colorNote.B);
+            });
+
+            MessagingCenter.Subscribe<NotesPage, Note>(this, nameof(NotesListViewModel), (page, note) =>
+            {
+                ChangeNote(note);
+            });
+
             MessagingCenter.Subscribe<NoteAddingPage, Note>(this, nameof(NoteAddingPage), (page, note) =>
             {
                 if (note.NoteId == -1)

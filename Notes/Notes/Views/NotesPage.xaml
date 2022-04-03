@@ -11,29 +11,41 @@
 
     <StackLayout>
         <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
-                  SelectionMode="Single" HasUnevenRows="True" 
+                  SelectionMode="Single" HasUnevenRows="True"
                   SeparatorColor="Gray">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="0, 6, 0, 0">
+                        <Grid Padding="0, 5, 0, 3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="0*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding Title}" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" TextColor="Black" Margin="10, 0"/>
-                            <Label Text="{Binding CreationDate}" Grid.Row="1" FontSize="15" TextColor="Gray"
-                                   Margin="10, 0"  Grid.ColumnSpan="4"/>
+                            <Frame BackgroundColor="{Binding Color}" Grid.RowSpan="2"
+                                   WidthRequest="30" HeightRequest="30" CornerRadius="30" Margin="8, 7, 8, 7"
+                                   Grid.Column="0">
 
-                            <Image Source="BigEdit.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                          CommandParameter="{Binding NoteId}"/>
+                                </Frame.GestureRecognizers>
+                                
+                            </Frame>
+
+                            <Label Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" TextColor="Black" 
+                                   Margin="0"/>
+                            <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15" TextColor="Gray"
+                                   Margin="0" Grid.ColumnSpan="4"/>
+
+                            <Image Source="BigEdit.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 5">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Edit"
                                                           CommandParameter="{Binding NoteId}"/>
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <Image Source="BigTrash.png" Grid.Column="6" Grid.RowSpan="2" Margin="8, 0">
+                            <Image Source="BigTrash.png" Grid.Column="6" Grid.RowSpan="2" Margin="8, 5">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Remove"
                                                           CommandParameter="{Binding NoteId}"/>
