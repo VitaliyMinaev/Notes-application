@@ -25,7 +25,8 @@ namespace Notes.Model
             Title = null;
             Text = null;
             CreationDate = DateTime.Now;
-            R = G = B = 0;
+            R = G = B = 255;
+            Color = Color.White;
         }
         public Note(string title, string text, DateTime date)
         {
@@ -34,7 +35,8 @@ namespace Notes.Model
             Title = title;
             Text = text;
             CreationDate = date;
-            R = G = B = 0;
+            R = G = B = 255;
+            Color = Color.White;
         }
     }
 }

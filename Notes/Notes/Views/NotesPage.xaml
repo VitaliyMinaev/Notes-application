@@ -10,6 +10,12 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
+        <Frame x:Name="FrameLabel" HasShadow="True" CornerRadius="35" BorderColor="#D8D8D8" 
+               BackgroundColor="#F7F7F7" Margin="15, 10, 15, 10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label x:Name="LabelNoElements" IsVisible="false" FontSize="Large" Text="No notes has been created"
+               TextColor="Black"/>
+        </Frame>
+
         <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
                   SelectionMode="Single" HasUnevenRows="True"
                   SeparatorColor="Gray">
@@ -24,7 +30,7 @@
 
                             <Frame BackgroundColor="{Binding Color}" Grid.RowSpan="2"
                                    WidthRequest="30" HeightRequest="30" CornerRadius="30" Margin="8, 7, 8, 7"
-                                   Grid.Column="0">
+                                   Grid.Column="0" HasShadow="True" BorderColor="LightGray">
 
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"

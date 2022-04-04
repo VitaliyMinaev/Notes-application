@@ -4,8 +4,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Notes.ViewModel;
 using Xamarin.CommunityToolkit.Extensions;
-using Notes.Model;
-using System.Collections.Generic;
 
 namespace Notes.Views
 {
@@ -20,6 +18,34 @@ namespace Notes.Views
         protected override void OnAppearing()
         {
             MessagingCenter.Send(this, nameof(NotesPage));
+            ShowOrHideControls();
+        }
+
+        private void ShowOrHideControls()
+        {
+            var notes = ((NotesListViewModel)BindingContext).Notes;
+
+            if (notes.Count == 0)
+                HideListViewShowLabel();
+            else
+                HideLabelShowListView();
+
+        }
+
+        private void HideLabelShowListView()
+        {
+            noteList.IsVisible = true;
+
+            FrameLabel.IsVisible = false;
+            LabelNoElements.IsVisible = false;
+        }
+
+        private void HideListViewShowLabel()
+        {
+            noteList.IsVisible = false;
+
+            FrameLabel.IsVisible = true;
+            LabelNoElements.IsVisible = true;
         }
 
         private async void ButtonClicked(object sender, EventArgs e)
@@ -52,6 +78,9 @@ namespace Notes.Views
             App.NotesDataBase.RemoveAsync(noteToRemove);
 
             MessagingCenter.Send(this, nameof(NotesPage), noteToRemove);
+
+            if(notes.Count == 0)
+                HideListViewShowLabel();
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
