@@ -16,17 +16,17 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Notes" Icon="note.png">
+    <FlyoutItem Title="Notes" Icon="notes.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:NotesPage}">
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="About program" Icon="AboutAppIcon.jpg">
+    <FlyoutItem Title="About program" Icon="about.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:AboutAppPage}">
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="Basket" Icon="recycle.png">
+    <FlyoutItem Title="Basket" Icon="trash.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:BasketPage}">
         </ShellContent>

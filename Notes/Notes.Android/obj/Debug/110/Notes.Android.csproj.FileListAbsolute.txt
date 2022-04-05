@@ -619,3 +619,11 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\72\jl\
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\77\jl\files.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\81\jl\files.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\89\jl\files.cache
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\addimage.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\backgroundimage.jfif
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\trashicon.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\trashcomputer.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\editpencil.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\backgroundimageres.jpg
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\about.png
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\notes.png

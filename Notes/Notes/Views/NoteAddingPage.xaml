@@ -4,7 +4,8 @@
              x:Class="Notes.Views.NoteAddingPage"
              xmlns:local="clr-namespace:Notes.ViewModel"
              xmlns:controls="clr-namespace:Notes.CustomItems"
-             Title="Add new note">
+             Title="Add new note"
+             BackgroundImageSource="BackgroundImage.jfif">
 
     <ContentPage.BindingContext>
         <local:NoteAddingViewModel/>

@@ -34,12 +34,16 @@ namespace Notes.Views
         private void HideLabelShowListView()
         {
             basketList.IsVisible = true;
+
+            FrameLabel.IsVisible = false;
             LabelNoElements.IsVisible = false;
         }
 
         private void HideListViewShowLabel()
         {
             basketList.IsVisible = false;
+
+            FrameLabel.IsVisible = true;
             LabelNoElements.IsVisible = true;
         }
 

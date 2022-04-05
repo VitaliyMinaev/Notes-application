@@ -11,9 +11,12 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="LabelNoElements" IsVisible="false" Text="The basket is clear" FontSize="Large"
-               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black"/>
-            
+            <Frame x:Name="FrameLabel" HasShadow="True" CornerRadius="35" BorderColor="DodgerBlue"
+               BackgroundColor="Transparent" Margin="15, 10, 15, 10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label x:Name="LabelNoElements" IsVisible="false" Text="The basket is clear" FontSize="Large"
+               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="DeepSkyBlue"/>
+            </Frame>
+
             <ListView x:Name ="basketList" SelectionMode="Single" HasUnevenRows="True"
                   SeparatorColor="Gray" ItemsSource="{Binding BasketNotes}">
                 
@@ -48,7 +51,8 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Text="Delete all" CornerRadius="30" Margin="20" Font="16" Clicked="Button_Clicked"/>
+            <Button Text="Delete all" CornerRadius="30" Margin="20" Font="16" Clicked="Button_Clicked"
+                    BackgroundColor="Transparent" TextColor="DodgerBlue" BorderColor="DodgerBlue"  BorderWidth="2"/>
             
         </StackLayout>
     </ContentPage.Content>
