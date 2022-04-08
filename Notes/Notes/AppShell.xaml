@@ -31,4 +31,9 @@
             ContentTemplate="{DataTemplate views:BasketPage}">
         </ShellContent>
     </FlyoutItem>
+    <FlyoutItem Title="Settings" Icon="settings.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:Settings}">
+        </ShellContent>
+    </FlyoutItem>
 </Shell>

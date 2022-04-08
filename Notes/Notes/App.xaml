@@ -3,6 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.App">
     <Application.Resources>
+        <ResourceDictionary>
+            
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="25"/>
+                <Setter Property="BackgroundColor" Value="Wheat"/>
+            </Style>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="25"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BorderColor" Value="DodgerBlue"/>
+            </Style>
 
+            <Color x:Key="BorderColorLight">DodgerBlue</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

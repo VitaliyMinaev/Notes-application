@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Views.Settings"
+             Title="Settings">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Frame BorderColor="{StaticResource BorderColorLight}"
+                   BackgroundColor="Transparent"
+                   HasShadow="False"
+                   HeightRequest="100"
+                   WidthRequest="100"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   Padding="0">
+                <VisualStateManager.VisualStateGroups>
+
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor"
+                                            Value="Red" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderColor"
+                                            Value="{StaticResource BorderColorLight}"/>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+
+                <Grid Margin="4"
+                      WidthRequest="100">
+                    <Grid WidthRequest="18"
+                          HeightRequest="18"
+                          HorizontalOptions="End"
+                          VerticalOptions="Start">
+                        <Ellipse Stroke="Blue"
+                                 Fill="White"
+                                 WidthRequest="16"
+                                 HeightRequest="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                        <Ellipse x:Name="check"
+                                 Fill="Blue"
+                                 WidthRequest="8"
+                                 HeightRequest="8"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"/>
+                    </Grid>
+                    
+                    <ContentPresenter/>
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate"
+                    Value="{DynamicResource RadioButtonTemplate}" />
+        </Style>
+        
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="Transparent" BorderColor="DodgerBlue" CornerRadius="25" Margin="45, 35, 45, 0" 
+                   HeightRequest="120">
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <RadioButton x:Name="RadioButtonLight" Value="Light" Margin="0, 0, 0, 5">
+                        <RadioButton.Content>
+                            <StackLayout Orientation="Vertical">
+                                <Image Source="light.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="Light mode" FontSize="16" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton x:Name="RadioButtonDark" Value="Dark" Margin="5, 0, 0, 0">
+                        <RadioButton.Content>
+                            <StackLayout Orientation="Vertical">
+                                <Image Source="dark.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="Dark mode" FontSize="16" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
