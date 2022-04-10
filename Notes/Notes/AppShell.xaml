@@ -2,7 +2,13 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.AppShell"
-       xmlns:views="clr-namespace:Notes.Views">
+       xmlns:views="clr-namespace:Notes.Views"
+       BackgroundColor="{AppThemeBinding Light={StaticResource ContentBarColorLight}, 
+                                         Dark={StaticResource ContentBarColorDark}}"
+       FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource FlyoutColorLight}, 
+                                         Dark={StaticResource FlyoutColorDark}}"
+       Shell.ForegroundColor="White"
+       Shell.TitleColor="White">
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
@@ -33,7 +39,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Settings" Icon="settings.png">
         <ShellContent
-            ContentTemplate="{DataTemplate views:Settings}">
+            ContentTemplate="{DataTemplate views:SettingsPage}">
         </ShellContent>
     </FlyoutItem>
 </Shell>

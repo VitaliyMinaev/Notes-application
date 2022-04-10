@@ -4,11 +4,24 @@
              x:Class="Notes.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="FrameColor">Wheat</Color>
+            <Color x:Key="BorderColorLight">DodgerBlue</Color>
+            <Color x:Key="BackgroundColorLight">#E9E9E9</Color>
+            <Color x:Key="BackgroundColorDark">#181818</Color>
+            <Color x:Key="ContentBarColorLight">DodgerBlue</Color>
+            <Color x:Key="ContentBarColorDark">#202022</Color>
+            <Color x:Key="TextColorLight">Black</Color>
+            <Color x:Key="TextColorDark">White</Color>
+            <Color x:Key="FlyoutColorLight">White</Color>
+            <Color x:Key="FlyoutColorDark">#191919</Color>
             
+            <Color x:Key="FlyoutBarColorDark">#111214</Color>
+
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="BackgroundColor" Value="Wheat"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource FrameColor}"/>
             </Style>
+            
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="CornerRadius" Value="25"/>
@@ -16,8 +29,6 @@
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="BorderColor" Value="DodgerBlue"/>
             </Style>
-
-            <Color x:Key="BorderColorLight">DodgerBlue</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

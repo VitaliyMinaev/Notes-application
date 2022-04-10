@@ -6537,13 +6537,14 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f070099;
     public static final int recycle=0x7f07009a;
     public static final int settings=0x7f07009b;
-    public static final int test_custom_background=0x7f07009c;
-    public static final int tooltip_frame_dark=0x7f07009d;
-    public static final int tooltip_frame_light=0x7f07009e;
-    public static final int trash=0x7f07009f;
-    public static final int trashcomputer=0x7f0700a0;
-    public static final int trashicon=0x7f0700a1;
-    public static final int upload=0x7f0700a2;
+    public static final int system=0x7f07009c;
+    public static final int test_custom_background=0x7f07009d;
+    public static final int tooltip_frame_dark=0x7f07009e;
+    public static final int tooltip_frame_light=0x7f07009f;
+    public static final int trash=0x7f0700a0;
+    public static final int trashcomputer=0x7f0700a1;
+    public static final int trashicon=0x7f0700a2;
+    public static final int upload=0x7f0700a3;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

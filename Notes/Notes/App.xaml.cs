@@ -4,6 +4,8 @@ using Notes.Data;
 using System.IO;
 using Notes.Views;
 using Notes.ViewModel;
+using Notes.Models;
+using Xamarin.Essentials;
 
 namespace Notes
 {
@@ -40,8 +42,45 @@ namespace Notes
         {
             InitializeComponent();
 
+            XamarinTheme.SetTheme();
+
             basket = new BasketPage();
             MainPage = new AppShell();
+        }
+
+        protected override void OnStart()
+        {
+            SetThemeAndAddHandler();
+        }
+
+        protected override void OnSleep()
+        {
+            SetThemeAndRemoveHandler();
+        }
+
+        private void SetThemeAndRemoveHandler()
+        {
+            XamarinTheme.SetTheme();
+            RequestedThemeChanged -= App_RequestedThemeChanged;
+        }
+
+        protected override void OnResume()
+        {
+            SetThemeAndAddHandler();
+        }
+
+        private void SetThemeAndAddHandler()
+        {
+            XamarinTheme.SetTheme();
+            RequestedThemeChanged += App_RequestedThemeChanged;
+        }
+
+        private void App_RequestedThemeChanged(object sender, AppThemeChangedEventArgs e)
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                XamarinTheme.SetTheme();
+            });
         }
     }
 }

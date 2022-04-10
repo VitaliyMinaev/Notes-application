@@ -29,6 +29,7 @@ foreground;obj\Debug\110\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\45\jl\res\layout\camerafragment.xml
 FrameLayout;D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\47\jl\res\layout\bottomtablayout.xml
 item;D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\47\jl\res\values\styles.xml
+item;obj\Debug\110\res\values\styles.xml
 LinearLayout;D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\47\jl\res\layout\bottomtablayout.xml
 paths;D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\46\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\lp\47\jl\res\values\attrs.xml
