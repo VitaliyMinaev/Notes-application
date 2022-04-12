@@ -2,8 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Notes.ViewModel"
+             xmlns:controls="clr-namespace:Notes.CustomItems"
              x:Class="Notes.Views.NotesPage"
-             Title="Custom notes">
+             Title="Custom notes"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                               Dark={StaticResource BackgroundColorDark}}">
 
     <ContentPage.BindingContext>
         <local:NotesListViewModel/>
@@ -15,18 +18,21 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Frame x:Name="FrameLabel" HasShadow="True" CornerRadius="35" BorderColor="#D8D8D8" 
-               BackgroundColor="#F7F7F7" Margin="15, 10, 15, 10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Frame x:Name="FrameLabel" HasShadow="True" CornerRadius="35" BackgroundColor="Transparent" 
+                   Margin="15, 10, 15, 10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   BorderColor="{AppThemeBinding Light={StaticResource BorderColorLight}, 
+                                                  Dark={StaticResource BorderColorDark}}">
                 <Label x:Name="LabelNoElements" IsVisible="false" FontSize="Large" Text="No notes has been created"
-               TextColor="Black"/>
+               TextColor="{AppThemeBinding Light=DodgerBlue, Dark=White}"/>
             </Frame>
 
             <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
                   SelectionMode="Single" HasUnevenRows="True"
-                  SeparatorColor="Gray">
+                  SeparatorColor="{AppThemeBinding Light=Gray, Dark=Black}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <controls:CustomViewCell SelectedItemBackgroundColor="{AppThemeBinding Light={StaticResource SelectedItemColorLight}, 
+                                                                                Dark={StaticResource SelectedItemColorDark}}">
                             <Grid Padding="0, 5, 0, 3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -41,13 +47,12 @@
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                                           CommandParameter="{Binding NoteId}"/>
                                     </Frame.GestureRecognizers>
-
                                 </Frame>
 
-                                <Label Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" TextColor="Black" 
-                                   Margin="0"/>
-                                <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15" TextColor="Gray"
-                                   Margin="0" Grid.ColumnSpan="4"/>
+                                <Label Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                                <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15"
+                                   Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
 
                                 <Image Source="EditPencil.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 5">
                                     <Image.GestureRecognizers>
@@ -64,7 +69,7 @@
                                 </Image>
 
                             </Grid>
-                        </ViewCell>
+                        </controls:CustomViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

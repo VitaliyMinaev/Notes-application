@@ -2,12 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.AboutAppPage"
-             Title="About application">
+             Title="About application"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                               Dark={StaticResource BackgroundColorDark}}">
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Made by Vitaliy" FontSize="24" TextColor="Black"
+            <Frame CornerRadius="25" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" Margin="20"
+                   BorderColor="{AppThemeBinding Light={StaticResource BorderColorLight}, Dark={StaticResource BorderColorDark}}">
+                <Label Text="Made by Vitaliy" FontSize="24"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

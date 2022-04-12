@@ -6,8 +6,9 @@
              x:DataType="views:ColorPopup"
              x:Class="Notes.Views.ColorPopup"
              Size="340, 380"
-             BackgroundColor="AliceBlue"
-             xct:CornerRadiusEffect.CornerRadius="35">
+             xct:CornerRadiusEffect.CornerRadius="35"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                               Dark={StaticResource BackgroundColorDark}}">
 
     <ContentView BindingContext="local:ColorPopup">
         <ContentView.Resources>
@@ -17,13 +18,18 @@
                     <Setter Property="HeightRequest" Value="50"/>
                     <Setter Property="CornerRadius" Value="25"/>
                     <Setter Property="Margin" Value="2, 0, 5, 2"/>
+                    <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource BorderColorLight}, 
+                        Dark={StaticResource BorderColorDark}}"/>
+                    <Setter Property="BorderWidth" Value="1"/>
                 </Style>
             </ResourceDictionary>
         </ContentView.Resources>
-        
-        <StackLayout>
 
-            <Label Text="Select a Color" TextColor="Black" FontSize="24" Margin="10"/>
+        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                               Dark={StaticResource BackgroundColorDark}}">
+
+            <Label Text="Select a Color" FontSize="24" Margin="20, 10, 10, 10"
+                   TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
 
             <Grid Margin="20, 0, 20, 20">
                 <Grid.ColumnDefinitions>

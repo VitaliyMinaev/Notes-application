@@ -10,20 +10,84 @@
        Shell.ForegroundColor="White"
        Shell.TitleColor="White">
 
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" 
+                                            Value="{AppThemeBinding Light={StaticResource TextColorLight}, 
+                                                                    Dark={StaticResource TextColorDark}}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" 
+                                            Value="{AppThemeBinding Light={StaticResource SelectedColorLight}, 
+                                                                    Dark={StaticResource SelectedColorDark}}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" 
+                                            Value="{AppThemeBinding Light={StaticResource TextColorLight}, 
+                                                                    Dark={StaticResource TextColorDark}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!-- Custom Style you can apply to any Flyout Item -->
+            
+            <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" 
+                                            Value="{AppThemeBinding Light={StaticResource TextColorLight}, 
+                                                                    Dark={StaticResource TextColorDark}}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" 
+                                            Value="{AppThemeBinding Light={StaticResource SelectedColorLight}, 
+                                                                    Dark={StaticResource SelectedColorDark}}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" 
+                                            Value="{AppThemeBinding Light={StaticResource TextColorLight}, 
+                                                                    Dark={StaticResource TextColorDark}}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid BackgroundColor="DodgerBlue"  Padding="20">
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="{AppThemeBinding Light={StaticResource ContentBarColorLight}, 
+                                                    Dark={StaticResource ContentBarColorDark}}">
+                <Image Source="books.png" Margin="10" HeightRequest="100" WidthRequest="100"/>
+                
                 <Label Text="Notes application"
-                       FontSize="24"
+                       FontSize="22"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"/>
-            </Grid>
+            </StackLayout>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Notes" Icon="notes.png">
-        <ShellContent
+    <FlyoutItem Title="Notes" Icon="bookmark.png">
+        <ShellContent 
             ContentTemplate="{DataTemplate views:NotesPage}">
         </ShellContent>
     </FlyoutItem>

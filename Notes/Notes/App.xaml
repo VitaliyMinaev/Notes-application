@@ -4,8 +4,20 @@
              x:Class="Notes.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="FrameBorderColorLight">DodgerBlue</Color>
+            <Color x:Key="FrameBorderColorDark">White</Color>
+
+            <Color x:Key="FrameBackgroundColorLight">#FFFFFF</Color>
+            <Color x:Key="FrameBackgroundColorDark">#2B2B2B</Color>
+
+            <Color x:Key="SelectedItemColorLight">#FFFFFF</Color>
+            <Color x:Key="SelectedItemColorDark">#404040</Color>
+
             <Color x:Key="FrameColor">Wheat</Color>
+            
             <Color x:Key="BorderColorLight">DodgerBlue</Color>
+            <Color x:Key="BorderColorDark">White</Color>
+
             <Color x:Key="BackgroundColorLight">#E9E9E9</Color>
             <Color x:Key="BackgroundColorDark">#181818</Color>
             <Color x:Key="ContentBarColorLight">DodgerBlue</Color>
@@ -16,6 +28,12 @@
             <Color x:Key="FlyoutColorDark">#191919</Color>
             
             <Color x:Key="FlyoutBarColorDark">#111214</Color>
+
+            <Color x:Key="SelectedColorLight">#D0D0D0</Color>
+            <Color x:Key="SelectedColorDark">#000F49</Color>
+
+            <Image x:Key="SunColorLight" Source="sun.png" HeightRequest="30" WidthRequest="30"/>
+            <Image x:Key="MoonColorDark" Source="sun.png" HeightRequest="30" WidthRequest="30"/>
 
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="25"/>
