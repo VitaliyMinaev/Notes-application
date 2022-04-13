@@ -8,8 +8,9 @@
     
     <ContentPage.Resources>
         <ControlTemplate x:Key="RadioButtonTemplate">
-            <Frame BorderColor="{StaticResource BorderColorLight}"
-                   BackgroundColor=" Transparent"
+            <Frame BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, 
+                                                     Dark={StaticResource FrameBorderColorDark}}"
+                   BackgroundColor="Transparent"
                    HasShadow="False"
                    HeightRequest="85"
                    WidthRequest="100"
@@ -24,9 +25,14 @@
                             <VisualState x:Name="Checked">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor"
-                                            Value="PapayaWhip" />
+                                            Value="{AppThemeBinding Light={StaticResource SettingsFrameColorLight},
+                                                                     Dark={StaticResource SettingsFrameColorDark}}"/>
                                     <Setter Property="BorderColor"
                                             Value="Red" />
+                                    
+                                    <Setter Property="WidthRequest" Value="100"/>
+                                    <Setter Property="HeightRequest" Value="100"/>
+                                    
                                     <Setter TargetName="check"
                                             Property="Opacity"
                                             Value="1" />
@@ -36,9 +42,15 @@
                             <VisualState x:Name="Unchecked">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor"
-                                            Value="PapayaWhip" />
+                                            Value="{AppThemeBinding Light={StaticResource SelectedItemColorLight},
+                                                                    Dark={StaticResource SelectedItemColorDark}}"/>
                                     <Setter Property="BorderColor"
-                                            Value="{StaticResource BorderColorLight}"/>
+                                            Value="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, 
+                                                     Dark={StaticResource FrameBorderColorDark}}"/>
+
+                                    <Setter Property="WidthRequest" Value="100"/>
+                                    <Setter Property="HeightRequest" Value="100"/>
+                                    
                                     <Setter TargetName="check"
                                             Property="Opacity"
                                             Value="0" />
@@ -83,26 +95,30 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Set theme:" FontSize="22" Margin="50, 15, 5, 0"
+            <Label Text="Set theme:" FontSize="22" Margin="15, 5, -5, 10"
                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-            
-            <Frame BackgroundColor="{DynamicResource FrameColor}" BorderColor="DodgerBlue" CornerRadius="25" 
-                   Margin="45, 5, 45, 0" HeightRequest="120">
 
-                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Frame CornerRadius="7" Margin="10, -5, 10, 5" HeightRequest="120"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, 
+                                                     Dark={StaticResource FrameBackgroundColorDark}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, 
+                                                     Dark={StaticResource FrameBorderColorDark}}">
+
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.3*"/>
                         <ColumnDefinition Width="0.3*"/>
                         <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <RadioButton x:Name="RadioButtonSystem" Value="System" Margin="5, 0, 0, 5"
                                  Grid.Column="0" CheckedChanged="RadioButtonSystem_CheckedChanged">
                         <RadioButton.Content>
                             <StackLayout Orientation="Vertical">
                                 <Image Source="system.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="System" FontSize="14" TextColor="Black" VerticalOptions="Center"
-                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="System" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
+                                                                   Dark={StaticResource TextColorDark}}"/>
                             </StackLayout>
                         </RadioButton.Content>
                     </RadioButton>
@@ -112,28 +128,26 @@
                         <RadioButton.Content>
                             <StackLayout Orientation="Vertical">
                                 <Image Source="light.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="Light mode" FontSize="14" TextColor="Black" VerticalOptions="Center" 
-                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="Light mode" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
+                                                                   Dark={StaticResource TextColorDark}}"/>
                             </StackLayout>
                         </RadioButton.Content>
                     </RadioButton>
 
-                    <RadioButton x:Name="RadioButtonDark" Value="Dark" Margin="5, 0, 0, 5"
-                                 Grid.Column="2" CheckedChanged="RadioButtonSystem_CheckedChanged">
+                    <RadioButton x:Name="RadioButtonDark" Value="Dark" Grid.Column="2" Margin="5, 0, 0, 5"
+                                 CheckedChanged="RadioButtonSystem_CheckedChanged">
                         <RadioButton.Content>
                             <StackLayout Orientation="Vertical">
                                 <Image Source="dark.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="Dark mode" FontSize="14" TextColor="Black" VerticalOptions="Center" 
-                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="Dark mode" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
+                                                                   Dark={StaticResource TextColorDark}}"/>
                             </StackLayout>
                         </RadioButton.Content>
                     </RadioButton>
-
                 </Grid>
             </Frame>
-
-            <Button CornerRadius="25" BorderColor="DodgerBlue" Text="Change color" TextColor="DodgerBlue" BackgroundColor="Transparent"
-                    Clicked="Button_Clicked" Margin="10" BorderWidth="2"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -44,14 +44,6 @@ namespace Notes.Views
             return null;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            var random = new Random();
-            var color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
-
-            App.Current.Resources["FrameColor"] = color;
-        }
-
         private void RadioButtonSystem_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = ((RadioButton)sender).Value as string;

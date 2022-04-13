@@ -4,6 +4,9 @@
              x:Class="Notes.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="SettingsFrameColorLight">#EFEFEF</Color>
+            <Color x:Key="SettingsFrameColorDark">#262626</Color>
+            
             <Color x:Key="FrameBorderColorLight">DodgerBlue</Color>
             <Color x:Key="FrameBorderColorDark">White</Color>
 
