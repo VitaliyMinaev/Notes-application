@@ -16,7 +16,7 @@
                 <Style x:Key="ButtonStyle" TargetType="Button">
                     <Setter Property="WidthRequest" Value="50"/>
                     <Setter Property="HeightRequest" Value="50"/>
-                    <Setter Property="CornerRadius" Value="25"/>
+                    <Setter Property="CornerRadius" Value="{DynamicResource CornerRadiusFrame}"/>
                     <Setter Property="Margin" Value="2, 0, 5, 2"/>
                     <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource BorderColorLight}, 
                         Dark={StaticResource BorderColorDark}}"/>

@@ -39,10 +39,8 @@
                                     <ColumnDefinition Width="0*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Frame BackgroundColor="{Binding Color}" Grid.RowSpan="2"
-                                   WidthRequest="30" HeightRequest="30" CornerRadius="30" Margin="8, 7, 8, 7"
-                                   Grid.Column="0" HasShadow="True" BorderColor="LightGray">
-
+                                <Frame Style="{DynamicResource FrameCircleStyle}" 
+                                       BackgroundColor="{Binding Color}" Grid.RowSpan="2" Margin="8, 7, 8, 7" Grid.Column="0">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                                           CommandParameter="{Binding NoteId}"/>

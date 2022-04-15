@@ -1,10 +1,7 @@
 ﻿using Notes.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +14,14 @@ namespace Notes.Views
         {
             InitializeComponent();
             CheckRadioButton();
+        }
+
+        protected override void OnAppearing()
+        {
+            int cornerRadius = (int)Application.Current.Resources["CornerRadiusFrame"];
+
+            LabelSlider.Text = $"The value is {cornerRadius}";
+            SliderCorner.Value = cornerRadius;
         }
 
         private void CheckRadioButton()
@@ -69,6 +74,23 @@ namespace Notes.Views
                     Settings.Theme = TheTheme.Dark;
                     break;
             }
+        }
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            LabelSlider.Text = $"The value is {(int)SliderCorner.Value}";
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                int value = (int)SliderCorner.Value;
+
+                Application.Current.Resources["CornerRadiusFrame"] = value;
+
+                File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), $"CornerRadius:{value}");
+            });
         }
     }
 }

@@ -32,7 +32,7 @@
                                     
                                     <Setter Property="WidthRequest" Value="100"/>
                                     <Setter Property="HeightRequest" Value="100"/>
-                                    
+
                                     <Setter TargetName="check"
                                             Property="Opacity"
                                             Value="1" />
@@ -50,7 +50,7 @@
 
                                     <Setter Property="WidthRequest" Value="100"/>
                                     <Setter Property="HeightRequest" Value="100"/>
-                                    
+
                                     <Setter TargetName="check"
                                             Property="Opacity"
                                             Value="0" />
@@ -95,14 +95,10 @@
     
     <ContentPage.Content>
         <StackLayout>
+            
             <Label Text="Set theme:" FontSize="22" Margin="15, 5, -5, 10"
                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-
-            <Frame CornerRadius="7" Margin="10, -5, 10, 5" HeightRequest="120"
-                   BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, 
-                                                     Dark={StaticResource FrameBackgroundColorDark}}"
-                   BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, 
-                                                     Dark={StaticResource FrameBorderColorDark}}">
+            <Frame Style="{StaticResource FrameStyle}" CornerRadius="7" Margin="10, -5, 10, 5" HeightRequest="120">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -147,6 +143,23 @@
                         </RadioButton.Content>
                     </RadioButton>
                 </Grid>
+            </Frame>
+
+            <Label Text="Customize corner radius:" FontSize="22" Margin="15, 5, -5, 10"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+            <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7">
+                <StackLayout Orientation="Horizontal">
+                    <Frame Style="{StaticResource FrameCircleStyle}" HeightRequest="50" WidthRequest="50"/>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label x:Name="LabelSlider" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                               HorizontalOptions="Center" FontSize="16"/>
+                        <Slider x:Name="SliderCorner" ThumbColor="{AppThemeBinding Light=DodgerBlue, Dark=Red}" 
+                                Minimum="0" Maximum="30" ValueChanged="Slider_ValueChanged"
+                                MinimumTrackColor="{AppThemeBinding Light=DodgerBlue, Dark=Gray}"/>
+                        <Button Style="{StaticResource ButtonStyle}" Text="Save" HorizontalOptions="Center" VerticalOptions="Center"
+                                HeightRequest="40" WidthRequest="190" Clicked="Button_Clicked" FontSize="14"/>
+                    </StackLayout>
+                </StackLayout>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

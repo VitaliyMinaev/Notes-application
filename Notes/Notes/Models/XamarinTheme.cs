@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Notes.Models
+﻿namespace Notes.Models
 {
     public static class XamarinTheme
     {

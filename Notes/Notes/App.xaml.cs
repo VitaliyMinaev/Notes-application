@@ -6,6 +6,8 @@ using Notes.Views;
 using Notes.ViewModel;
 using Notes.Models;
 using Xamarin.Essentials;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Notes
 {
@@ -14,6 +16,7 @@ namespace Notes
         // Set the path to data base
         private static NotesDB notesDataBase;
         private static NotesDB basketDataBase;
+        private static string folderPath;
         private BasketPage basket;
         public static NotesDB NotesDataBase
         {
@@ -37,10 +40,17 @@ namespace Notes
                 return basketDataBase;
             }
         }
+        public static string FolderPath
+        {
+            get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        }
 
         public App()
         {
             InitializeComponent();
+
+            if (File.Exists(Path.Combine(FolderPath, "Settings.txt")) == false)
+                File.Create(Path.Combine(FolderPath, "Settings.txt"));
 
             XamarinTheme.SetTheme();
 
@@ -48,8 +58,40 @@ namespace Notes
             MainPage = new AppShell();
         }
 
+        private async void SetSettingsAsync()
+        {
+            await Task.Run(() =>
+            {
+                int value = ReadCornerRadiusFromSettings();
+                if (value == -1)
+                {
+                    Application.Current.Resources["CornerRadiusFrame"] = 30;
+                }
+                else
+                {
+                    Application.Current.Resources["CornerRadiusFrame"] = value;
+                }
+            });
+        }
+        private int ReadCornerRadiusFromSettings()
+        {
+            string result = File.ReadAllText(Path.Combine(FolderPath, "Settings.txt"));
+
+            if (string.IsNullOrEmpty(result) == true)
+                return -1;
+
+            var list = result.Split(':').ToList();
+            int value;
+
+            if (int.TryParse(list[1], out value) == false)
+                throw new ArgumentException("In settings not a value");
+
+            return value;
+        }
+
         protected override void OnStart()
         {
+            SetSettingsAsync();
             SetThemeAndAddHandler();
         }
 

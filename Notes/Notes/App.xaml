@@ -35,20 +35,35 @@
             <Color x:Key="SelectedColorLight">#D0D0D0</Color>
             <Color x:Key="SelectedColorDark">#000F49</Color>
 
+            <CornerRadius x:Key="CornerRadiusFrame">30</CornerRadius>
+
             <Image x:Key="SunColorLight" Source="sun.png" HeightRequest="30" WidthRequest="30"/>
             <Image x:Key="MoonColorDark" Source="sun.png" HeightRequest="30" WidthRequest="30"/>
 
+            <Style x:Key="FrameCircleStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="{DynamicResource CornerRadiusFrame}"/>
+                <Setter Property="WidthRequest" Value="30"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="BorderColor" Value="LightGray"/>
+            </Style>
+
             <Style x:Key="FrameStyle" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="BackgroundColor" Value="{DynamicResource FrameColor}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, 
+                                                     Dark={StaticResource FrameBackgroundColorDark}}"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, 
+                                                     Dark={StaticResource FrameBorderColorDark}}"/>
             </Style>
             
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="BorderColor" Value="DodgerBlue"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextColorLight}, 
+                                                                     Dark={StaticResource TextColorDark}}"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource BorderColorLight}, 
+                                                                       Dark={StaticResource BorderColorDark}}"/>
+                <Setter Property="BorderWidth" Value="1"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

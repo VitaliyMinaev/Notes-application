@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Notes.ViewModel;
 using Xamarin.CommunityToolkit.Extensions;
+using Notes;
 
 namespace Notes.Views
 {
@@ -106,6 +107,12 @@ namespace Notes.Views
             colorNote.Color = color;
 
             MessagingCenter.Send(this, nameof(NotesListViewModel), colorNote);
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+             int cornerRadius = new Random().Next(1, 30);
+             Application.Current.Resources["CornerRadiusFrame"] = cornerRadius;
         }
     }
 }

@@ -22,5 +22,4 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\ref\Notes.dll
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.pdb
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\ColorPopUp.xaml.g.cs
-D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.csproj.AssemblyReference.cache
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\SettingsPage.xaml.g.cs

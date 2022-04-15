@@ -37,8 +37,8 @@
                                     <ColumnDefinition Width="0*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Frame BackgroundColor="{Binding Color}" Grid.RowSpan="2" Grid.Column="0"
-                                   WidthRequest="50" HeightRequest="50" CornerRadius="35" Margin="15, 7, 15, 7"
+                                <Frame BackgroundColor="{Binding Color}" Style="{DynamicResource FrameCircleStyle}" Grid.RowSpan="2" Grid.Column="0"
+                                   WidthRequest="50" HeightRequest="50" Margin="15, 7, 15, 7"
                                    HasShadow="True" BorderColor="LightGray">
                                 </Frame>
 
