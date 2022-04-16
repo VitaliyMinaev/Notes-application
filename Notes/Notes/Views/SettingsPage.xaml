@@ -147,20 +147,48 @@
 
             <Label Text="Customize corner radius:" FontSize="22" Margin="15, 5, -5, 10"
                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-            <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7">
+            <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7" HeightRequest="90">
                 <StackLayout Orientation="Horizontal">
-                    <Frame Style="{StaticResource FrameCircleStyle}" HeightRequest="50" WidthRequest="50"/>
+                    <Frame x:Name="ExampleFrame" Style="{StaticResource FrameCircleStyle}" CornerRadius="{DynamicResource CornerRadiusFrameExample}" 
+                           Margin="10, 0, 0, 10" HorizontalOptions="Center" VerticalOptions="Center" Background="Orange"/>
+                    
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                         <Label x:Name="LabelSlider" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                HorizontalOptions="Center" FontSize="16"/>
                         <Slider x:Name="SliderCorner" ThumbColor="{AppThemeBinding Light=DodgerBlue, Dark=Red}" 
-                                Minimum="0" Maximum="30" ValueChanged="Slider_ValueChanged"
+                                Minimum="0" Maximum="35" ValueChanged="Slider_ValueChanged" MaximumTrackColor="{AppThemeBinding Light=DodgerBlue, Dark=Gray}"
                                 MinimumTrackColor="{AppThemeBinding Light=DodgerBlue, Dark=Gray}"/>
                         <Button Style="{StaticResource ButtonStyle}" Text="Save" HorizontalOptions="Center" VerticalOptions="Center"
                                 HeightRequest="40" WidthRequest="190" Clicked="Button_Clicked" FontSize="14"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>
+
+            <Label Text="Select fonts:" FontSize="22" Margin="15, 5, -5, 10"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+            <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7">
+                
+            </Frame>
+
+            <Frame Style="{StaticResource FrameStyle}" Margin="10" CornerRadius="10"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                                     Dark={StaticResource BackgroundColorDark}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="Orange" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
+                           Margin="10" Grid.Column="0" CornerRadius="{DynamicResource CornerRadiusFrameExample}"/>
+
+                    <Label Text="Title" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                    <Label Text="4/16/2022 4:17:43 PM" Grid.Column="1" Grid.Row="1" FontSize="15"
+                                   Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
+                </Grid>
+            </Frame>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

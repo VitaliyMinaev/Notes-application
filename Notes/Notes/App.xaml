@@ -36,6 +36,7 @@
             <Color x:Key="SelectedColorDark">#000F49</Color>
 
             <CornerRadius x:Key="CornerRadiusFrame">30</CornerRadius>
+            <CornerRadius x:Key="CornerRadiusFrameExample">30</CornerRadius>
 
             <Image x:Key="SunColorLight" Source="sun.png" HeightRequest="30" WidthRequest="30"/>
             <Image x:Key="MoonColorDark" Source="sun.png" HeightRequest="30" WidthRequest="30"/>
@@ -45,7 +46,8 @@
                 <Setter Property="WidthRequest" Value="30"/>
                 <Setter Property="HeightRequest" Value="30"/>
                 <Setter Property="HasShadow" Value="True"/>
-                <Setter Property="BorderColor" Value="LightGray"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource BorderColorLight}, 
+                        Dark={StaticResource BorderColorDark}}"/>
             </Style>
 
             <Style x:Key="FrameStyle" TargetType="Frame">

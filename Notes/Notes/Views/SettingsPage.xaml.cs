@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +14,7 @@ namespace Notes.Views
         public SettingsPage()
         {
             InitializeComponent();
+
             CheckRadioButton();
         }
 
@@ -51,7 +53,8 @@ namespace Notes.Views
 
         private void RadioButtonSystem_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            string result = ((RadioButton)sender).Value as string;
+            string result = (string)((RadioButton)sender).Value;
+
             if (string.IsNullOrEmpty(result) == true)
                 throw new ArgumentException("Doesn't find a radio button with this value");
 
@@ -76,9 +79,13 @@ namespace Notes.Views
             }
         }
 
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        private async void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            LabelSlider.Text = $"The value is {(int)SliderCorner.Value}";
+            await Task.Run(() =>
+            {
+                MainThread.BeginInvokeOnMainThread(() => LabelSlider.Text = $"The value is {(int)SliderCorner.Value}");
+                Application.Current.Resources["CornerRadiusFrameExample"] = (int)SliderCorner.Value;
+            });
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -87,8 +94,7 @@ namespace Notes.Views
             {
                 int value = (int)SliderCorner.Value;
 
-                Application.Current.Resources["CornerRadiusFrame"] = value;
-
+                Application.Current.Resources["CornerRadiusFrame"] = (int)SliderCorner.Value;
                 File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), $"CornerRadius:{value}");
             });
         }

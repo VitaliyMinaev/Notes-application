@@ -1,4 +1,6 @@
-﻿namespace Notes.Models
+﻿using System.Threading.Tasks;
+
+namespace Notes.Models
 {
     public static class XamarinTheme
     {

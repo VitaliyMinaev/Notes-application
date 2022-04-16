@@ -28,7 +28,7 @@
 
             <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
                   SelectionMode="Single" HasUnevenRows="True"
-                  SeparatorColor="{AppThemeBinding Light=Gray, Dark=Black}">
+                  SeparatorColor="{AppThemeBinding Light=Gray, Dark=Black}"> 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:CustomViewCell SelectedItemBackgroundColor="{AppThemeBinding Light={StaticResource SelectedItemColorLight}, 
@@ -39,8 +39,8 @@
                                     <ColumnDefinition Width="0*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Frame Style="{DynamicResource FrameCircleStyle}" 
-                                       BackgroundColor="{Binding Color}" Grid.RowSpan="2" Margin="8, 7, 8, 7" Grid.Column="0">
+                                <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="{Binding Color}" 
+                                       Grid.RowSpan="2" Margin="8, 8, 8, 8" Grid.Column="0">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                                           CommandParameter="{Binding NoteId}"/>
@@ -48,7 +48,8 @@
                                 </Frame>
 
                                 <Label Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
-                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
+                                       FontFamily="SquarePeg"/>
                                 <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15"
                                    Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
 

@@ -3,12 +3,12 @@ using Xamarin.Forms;
 using Notes.Data;
 using System.IO;
 using Notes.Views;
-using Notes.ViewModel;
 using Notes.Models;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using System.Linq;
 
+[assembly: ExportFont("SquarePeg-Regular.ttf", Alias = "SquarePeg")]
 namespace Notes
 {
     public partial class App : Application
@@ -49,13 +49,25 @@ namespace Notes
         {
             InitializeComponent();
 
-            if (File.Exists(Path.Combine(FolderPath, "Settings.txt")) == false)
-                File.Create(Path.Combine(FolderPath, "Settings.txt"));
-
-            XamarinTheme.SetTheme();
+            CheckExistingFileOrCreateNewAsync();
+            SetThemeAsync();
 
             basket = new BasketPage();
             MainPage = new AppShell();
+        }
+
+        private static async void SetThemeAsync()
+        {
+            await Task.Run(() => XamarinTheme.SetTheme());
+        }
+
+        private static async void CheckExistingFileOrCreateNewAsync()
+        {
+            await Task.Run(() =>
+            {
+                if (File.Exists(Path.Combine(FolderPath, "Settings.txt")) == false)
+                    File.Create(Path.Combine(FolderPath, "Settings.txt"));
+            });
         }
 
         private async void SetSettingsAsync()

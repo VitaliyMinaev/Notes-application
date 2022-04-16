@@ -83,9 +83,10 @@
                                                                         Dark={StaticResource TextColorDark}}"/>
 
                     <Button x:Name="CollorButton"
+                        BorderWidth="1"
                         WidthRequest="40"
                         HeightRequest="40"
-                        CornerRadius="20"
+                        CornerRadius="{DynamicResource CornerRadiusFrame}"
                         VerticalOptions="Center"
                         HorizontalOptions="Start"
                         BackgroundColor="{Binding AddingNote.Color}"
