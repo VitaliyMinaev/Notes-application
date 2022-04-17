@@ -56,7 +56,7 @@
                 <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, 
                                                      Dark={StaticResource FrameBorderColorDark}}"/>
             </Style>
-            
+
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="CornerRadius" Value="25"/>

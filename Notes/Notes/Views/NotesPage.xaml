@@ -40,7 +40,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="{Binding Color}" 
-                                       Grid.RowSpan="2" Margin="8, 8, 8, 8" Grid.Column="0">
+                                       Grid.RowSpan="2" Margin="8, 5, 7, 8" Grid.Column="0">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                                           CommandParameter="{Binding NoteId}"/>
@@ -48,8 +48,7 @@
                                 </Frame>
 
                                 <Label Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
-                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
-                                       FontFamily="SquarePeg"/>
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
                                 <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15"
                                    Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
 

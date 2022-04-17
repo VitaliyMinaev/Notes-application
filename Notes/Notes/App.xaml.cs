@@ -8,7 +8,9 @@ using Xamarin.Essentials;
 using System.Threading.Tasks;
 using System.Linq;
 
-[assembly: ExportFont("SquarePeg-Regular.ttf", Alias = "SquarePeg")]
+[assembly: ExportFont("SquarePeg-Regular.ttf", Alias = "SquarePeg"), ExportFont("Akshar-Regular.ttf", Alias = "AksharReg"), 
+    ExportFont("LibreBaskerville-Regular.ttf", Alias = "LibreBaskerville"), ExportFont("Pacifico-Regular.ttf", Alias = "Pacifico"),
+    ExportFont("PTSerif-Regular.ttf", Alias = "PTFerif"), ExportFont("RobotoSlab-VariableFont_wght.ttf", Alias = "RobotoSlab")]
 namespace Notes
 {
     public partial class App : Application

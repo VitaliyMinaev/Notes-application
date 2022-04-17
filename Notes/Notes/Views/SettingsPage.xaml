@@ -86,7 +86,7 @@
             </Frame>
         </ControlTemplate>
 
-        <Style TargetType="RadioButton">
+        <Style x:Key="RadioButtonStyleModes" TargetType="RadioButton">
             <Setter Property="ControlTemplate"
                     Value="{DynamicResource RadioButtonTemplate}" />
         </Style>
@@ -94,64 +94,84 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout>
-            
-            <Label Text="Set theme:" FontSize="22" Margin="15, 5, -5, 10"
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Set theme:" FontSize="22" Margin="15, 5, -5, 10"
                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-            <Frame Style="{StaticResource FrameStyle}" CornerRadius="7" Margin="10, -5, 10, 5" HeightRequest="120">
+                <Frame Style="{StaticResource FrameStyle}" CornerRadius="7" Margin="10, -5, 10, 0" HeightRequest="120">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                        </Grid.ColumnDefinitions>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.3*"/>
-                        <ColumnDefinition Width="0.3*"/>
-                        <ColumnDefinition Width="0.3*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <RadioButton x:Name="RadioButtonSystem" Value="System" Margin="5, 0, 0, 5"
+                        <RadioButton x:Name="RadioButtonSystem" Style="{StaticResource RadioButtonStyleModes}" Value="System" Margin="5, 0, 0, 5"
                                  Grid.Column="0" CheckedChanged="RadioButtonSystem_CheckedChanged">
-                        <RadioButton.Content>
-                            <StackLayout Orientation="Vertical">
-                                <Image Source="system.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="System" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Vertical">
+                                    <Image Source="system.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="System" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
                                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
                                                                    Dark={StaticResource TextColorDark}}"/>
-                            </StackLayout>
-                        </RadioButton.Content>
-                    </RadioButton>
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
 
-                    <RadioButton x:Name="RadioButtonLight" Value="Light" Margin="5, 0, 0, 5"
+                        <RadioButton x:Name="RadioButtonLight" Style="{StaticResource RadioButtonStyleModes}" Value="Light" Margin="5, 0, 0, 5"
                                  Grid.Column="1" CheckedChanged="RadioButtonSystem_CheckedChanged">
-                        <RadioButton.Content>
-                            <StackLayout Orientation="Vertical">
-                                <Image Source="light.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="Light mode" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Vertical">
+                                    <Image Source="light.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="Light mode" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
                                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
                                                                    Dark={StaticResource TextColorDark}}"/>
-                            </StackLayout>
-                        </RadioButton.Content>
-                    </RadioButton>
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
 
-                    <RadioButton x:Name="RadioButtonDark" Value="Dark" Grid.Column="2" Margin="5, 0, 0, 5"
+                        <RadioButton x:Name="RadioButtonDark" Style="{StaticResource RadioButtonStyleModes}" Value="Dark" Grid.Column="2" Margin="5, 0, 0, 5"
                                  CheckedChanged="RadioButtonSystem_CheckedChanged">
-                        <RadioButton.Content>
-                            <StackLayout Orientation="Vertical">
-                                <Image Source="dark.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="Dark mode" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Vertical">
+                                    <Image Source="dark.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="Dark mode" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
                                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
                                                                    Dark={StaticResource TextColorDark}}"/>
-                            </StackLayout>
-                        </RadioButton.Content>
-                    </RadioButton>
-                </Grid>
-            </Frame>
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </Grid>
+                </Frame>
 
-            <Label Text="Customize corner radius:" FontSize="22" Margin="15, 5, -5, 10"
+                <Label Text="Example item:" FontSize="22" Margin="15, 5, 0, 10"
                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-            <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7" HeightRequest="90">
-                <StackLayout Orientation="Horizontal">
-                    <Frame x:Name="ExampleFrame" Style="{StaticResource FrameCircleStyle}" CornerRadius="{DynamicResource CornerRadiusFrameExample}" 
-                           Margin="10, 0, 0, 10" HorizontalOptions="Center" VerticalOptions="Center" Background="Orange"/>
-                    
+                <Frame Style="{StaticResource FrameStyle}" Margin="10, -5, 10, 5" CornerRadius="7"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, 
+                                                     Dark={StaticResource FrameBackgroundColorDark}}">
+                    <Grid HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="Orange" Grid.RowSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                           Grid.Column="0" CornerRadius="{DynamicResource CornerRadiusFrameExample}" Padding="0"
+                           WidthRequest="50" HeightRequest="50"/>
+
+                        <Label Text="Title" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                        <Label Text="4/16/2022 4:17:43 PM" Grid.Column="1" Grid.Row="1" FontSize="15"
+                                   Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
+
+                        <Image Source="EditPencil.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 5, 5, 1"/>
+                        <Image Source="TrashComputer.png" Grid.Column="6" Grid.RowSpan="2" Margin="8, 5, 5, 0"/>
+                    </Grid>
+                </Frame>
+
+                <Label Text="Customize corner radius:" FontSize="22" Margin="15, 5, -5, 10"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7" HeightRequest="90">
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                         <Label x:Name="LabelSlider" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                HorizontalOptions="Center" FontSize="16"/>
@@ -161,34 +181,22 @@
                         <Button Style="{StaticResource ButtonStyle}" Text="Save" HorizontalOptions="Center" VerticalOptions="Center"
                                 HeightRequest="40" WidthRequest="190" Clicked="Button_Clicked" FontSize="14"/>
                     </StackLayout>
-                </StackLayout>
-            </Frame>
+                </Frame>
 
-            <Label Text="Select fonts:" FontSize="22" Margin="15, 5, -5, 10"
+                <Label Text="Select fonts:" FontSize="22" Margin="15, 5, -5, 10"
                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-            <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7">
-                
-            </Frame>
-
-            <Frame Style="{StaticResource FrameStyle}" Margin="10" CornerRadius="10"
-                   BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
-                                                     Dark={StaticResource BackgroundColorDark}}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="0*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="Orange" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
-                           Margin="10" Grid.Column="0" CornerRadius="{DynamicResource CornerRadiusFrameExample}"/>
-
-                    <Label Text="Title" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
-                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
-                    <Label Text="4/16/2022 4:17:43 PM" Grid.Column="1" Grid.Row="1" FontSize="15"
-                                   Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
-                </Grid>
-            </Frame>
-            
-        </StackLayout>
+                <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7">
+                    <StackLayout>
+                        <Label Text="Select title's font family: " FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        <RadioButton Content="SquarePeg-Regular" FontFamily="SquarePeg" Value="SquarePeg" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        <RadioButton Content="Akshar-Regular" FontFamily="AksharReg" Value="AksharReg" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        <RadioButton Content="LibreBaskerville-Regular" FontFamily="LibreBaskerville" Value="LibreBaskerville" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        <RadioButton Content="Pacifico-Regular" FontFamily="Pacifico" Value="Pacifico" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        <RadioButton Content="PTSerif-Regular" FontFamily="PTFerif" Value="PTFerif" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        <RadioButton Content="RobotoSlab-VariableFont" FontFamily="RobotoSlab" Value="RobotoSlab" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
