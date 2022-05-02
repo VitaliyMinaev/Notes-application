@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Notes.ViewModel"
-             xmlns:controls="clr-namespace:Notes.CustomItems"
              x:Class="Notes.Views.BasketPage"
              Title="Basket"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
@@ -29,8 +28,7 @@
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CustomViewCell SelectedItemBackgroundColor="{AppThemeBinding Light={StaticResource SelectedItemColorLight}, 
-                                                                                Dark={StaticResource SelectedItemColorDark}}">
+                        <ViewCell>
                             <Grid Padding="0, 6, 0, 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -55,7 +53,7 @@
                                 </Image>
                                 
                             </Grid>
-                        </controls:CustomViewCell>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

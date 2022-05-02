@@ -10,7 +10,6 @@ namespace Notes.ViewModel
     public class NotesListViewModel
     {
         public ObservableCollection<Note> Notes { get; set; }
-
         public Note AddingNote { get; set; }
 
         public NotesListViewModel()

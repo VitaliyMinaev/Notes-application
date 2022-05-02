@@ -26,19 +26,17 @@
                TextColor="{AppThemeBinding Light=DodgerBlue, Dark=White}"/>
             </Frame>
 
-            <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" 
-                  SelectionMode="Single" HasUnevenRows="True"
+            <ListView x:Name ="noteList" ItemsSource="{Binding Notes}" HasUnevenRows="True"
                   SeparatorColor="{AppThemeBinding Light=Gray, Dark=Black}"> 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CustomViewCell SelectedItemBackgroundColor="{AppThemeBinding Light={StaticResource SelectedItemColorLight}, 
-                                                                                Dark={StaticResource SelectedItemColorDark}}">
+                        <ViewCell>
                             <Grid Padding="0, 5, 0, 3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="0*"/>
                                 </Grid.ColumnDefinitions>
-
+                                
                                 <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="{Binding Color}" 
                                        Grid.RowSpan="2" Margin="8, 5, 7, 8" Grid.Column="0">
                                     <Frame.GestureRecognizers>
@@ -47,7 +45,7 @@
                                     </Frame.GestureRecognizers>
                                 </Frame>
 
-                                <Label Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
+                                <Label Style="{DynamicResource FontStyle}" Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
                                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
                                 <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15"
                                    Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
@@ -67,7 +65,7 @@
                                 </Image>
 
                             </Grid>
-                        </controls:CustomViewCell>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

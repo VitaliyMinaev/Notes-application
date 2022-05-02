@@ -98,5 +98,27 @@ namespace Notes.Views
                 File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), $"CornerRadius:{value}");
             });
         }
+
+        private void RadioButtonFonts_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            string result = (string)((RadioButton)sender).Value;
+
+            if (string.IsNullOrEmpty(result) == true)
+                throw new ArgumentException("Doesn't find a radio button with this value");
+
+            if (result == "Default")
+                SetDefaultFont();
+
+            SetFont(result);
+        }
+
+        private static void SetFont(string fontName)
+        {
+            Application.Current.Resources["TitleFont"] = fontName;
+        }
+        private static void SetDefaultFont()
+        {
+            Application.Current.Resources["TitleFont"] = "";
+        }
     }
 }
