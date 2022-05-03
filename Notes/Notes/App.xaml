@@ -68,9 +68,25 @@
             <OnPlatform x:Key="TitleFont" x:TypeArguments="x:String">
                 <OnPlatform.Android></OnPlatform.Android>
             </OnPlatform>
+            <OnPlatform x:Key="TitleFontSize" x:TypeArguments="x:Int64">
+                <OnPlatform.Android>18</OnPlatform.Android>
+            </OnPlatform>
 
-            <Style x:Key="FontStyle" TargetType="Label">
+            <Style x:Key="TitleFontStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{DynamicResource TitleFont}"/>
+                <Setter Property="FontSize" Value="{DynamicResource TitleFontSize}"/>
+            </Style>
+
+            <OnPlatform x:Key="DateFont" x:TypeArguments="x:String">
+                <OnPlatform.Android></OnPlatform.Android>
+            </OnPlatform>
+            <OnPlatform x:Key="DateFontSize" x:TypeArguments="x:Int64">
+                <OnPlatform.Android>15</OnPlatform.Android>
+            </OnPlatform>
+
+            <Style x:Key="DateFontStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource DateFont}"/>
+                <Setter Property="FontSize" Value="{DynamicResource DateFontSize}"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

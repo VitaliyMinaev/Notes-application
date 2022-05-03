@@ -29,21 +29,28 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="0, 6, 0, 0">
+                            <Grid Margin="5, 2, 0, 3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="0*"/>
+                                    <ColumnDefinition Width="1.6*"/>
+                                    <ColumnDefinition Width="1.6*"/>
+                                    <ColumnDefinition Width="1.6*"/>
+                                    <ColumnDefinition Width="1.6*"/>
+                                    <ColumnDefinition Width="1.6*"/>
+                                    <ColumnDefinition Width="1.6*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Frame BackgroundColor="{Binding Color}" Style="{DynamicResource FrameCircleStyle}" Grid.RowSpan="2" Grid.Column="0"
-                                   WidthRequest="50" HeightRequest="50" Margin="15, 7, 15, 7"
-                                   HasShadow="True" BorderColor="LightGray">
+                                       Margin="5, 2, 5, 2" HasShadow="True" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}">
                                 </Frame>
 
-                                <Label Text="{Binding Title}" Grid.Column="1" Grid.ColumnSpan="4" FontSize="18" Margin="0, 0"
-                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
-                                <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15" TextColor="Gray"
-                                   Margin="0, 0"  Grid.ColumnSpan="4"/>
+                                <Label Style="{StaticResource TitleFontStyle}" Text="{Binding Title}" Grid.Column="1" Grid.ColumnSpan="4" Margin="0, 0"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"  FontSize="18"/>
+                                <Label Style="{StaticResource DateFontStyle}" Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" TextColor="Gray"
+                                   Margin="0, 0"  Grid.ColumnSpan="4" FontSize="15"/>
 
                                 <Image Source="upload.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 0">
                                     <Image.GestureRecognizers>

@@ -18,7 +18,6 @@ namespace Notes
         // Set the path to data base
         private static NotesDB notesDataBase;
         private static NotesDB basketDataBase;
-        private static string folderPath;
         private BasketPage basket;
         public static NotesDB NotesDataBase
         {

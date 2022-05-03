@@ -107,18 +107,43 @@ namespace Notes.Views
                 throw new ArgumentException("Doesn't find a radio button with this value");
 
             if (result == "Default")
-                SetDefaultFont();
+                SetDefaultTitleFont();
 
-            SetFont(result);
+            SetTitleFont(result);
         }
-
-        private static void SetFont(string fontName)
+        private static void SetTitleFont(string fontName)
         {
             Application.Current.Resources["TitleFont"] = fontName;
+
+            if(fontName == "LibreBaskerville-Regular.ttf")
+            {
+                Application.Current.Resources["TitleFontSize"] = 16;
+            }
         }
-        private static void SetDefaultFont()
+        private static void SetDefaultTitleFont()
         {
             Application.Current.Resources["TitleFont"] = "";
+        }
+
+        private void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            string result = (string)((RadioButton)sender).Value;
+
+            if (string.IsNullOrEmpty(result) == true)
+                throw new ArgumentException("Doesn't find a radio button with this value");
+
+            if (result == "Default")
+                SetDefaultDateFont();
+
+            SetDateFont(result);
+        }
+        private static void SetDateFont(string fontName)
+        {
+            Application.Current.Resources["DateFont"] = fontName;
+        }
+        private static void SetDefaultDateFont()
+        {
+            Application.Current.Resources["DateFont"] = "";
         }
     }
 }

@@ -31,23 +31,32 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="0, 5, 0, 3">
+                            <Grid Margin="5, 2, 0, 3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="0*"/>
+                                    <ColumnDefinition Width="1.42*"/>
+                                    <ColumnDefinition Width="1.42*"/>
+                                    <ColumnDefinition Width="1.42*"/>
+                                    <ColumnDefinition Width="1.42*"/>
+                                    <ColumnDefinition Width="1.42*"/>
+                                    <ColumnDefinition Width="1.42*"/>
+                                    <ColumnDefinition Width="1.42*"/>
                                 </Grid.ColumnDefinitions>
-                                
-                                <Frame Style="{DynamicResource FrameCircleStyle}" BackgroundColor="{Binding Color}" 
-                                       Grid.RowSpan="2" Margin="8, 5, 7, 8" Grid.Column="0">
+
+                                <Frame Style="{DynamicResource FrameCircleStyle}"  Grid.Column="0" BackgroundColor="{Binding Color}" 
+                                       Grid.RowSpan="2" Margin="0, 2, 0, 2">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                                           CommandParameter="{Binding NoteId}"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
 
-                                <Label Style="{DynamicResource FontStyle}" Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18" Margin="0"
+                                <Label Style="{StaticResource TitleFontStyle}" Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" FontSize="18"
                                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
-                                <Label Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15"
+                                <Label Style="{StaticResource DateFontStyle}" Text="{Binding CreationDate}" Grid.Column="1" Grid.Row="1" FontSize="15"
                                    Margin="0" Grid.ColumnSpan="4" TextColor="Gray"/>
 
                                 <Image Source="EditPencil.png" Grid.Column="5" Grid.RowSpan="2" Margin="8, 5">
