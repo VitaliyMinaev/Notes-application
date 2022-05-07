@@ -66,7 +66,7 @@
             </Style>
 
             <OnPlatform x:Key="TitleFont" x:TypeArguments="x:String">
-                <OnPlatform.Android></OnPlatform.Android>
+                <OnPlatform.Android>RobotoSlab-VariableFont_wght.ttf</OnPlatform.Android>
             </OnPlatform>
             <OnPlatform x:Key="TitleFontSize" x:TypeArguments="x:Int64">
                 <OnPlatform.Android>18</OnPlatform.Android>
@@ -78,7 +78,7 @@
             </Style>
 
             <OnPlatform x:Key="DateFont" x:TypeArguments="x:String">
-                <OnPlatform.Android></OnPlatform.Android>
+                <OnPlatform.Android>RobotoSlab-VariableFont_wght.ttf</OnPlatform.Android>
             </OnPlatform>
             <OnPlatform x:Key="DateFontSize" x:TypeArguments="x:Int64">
                 <OnPlatform.Android>15</OnPlatform.Android>

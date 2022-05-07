@@ -7,6 +7,8 @@ using Notes.Models;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using System.Linq;
+using Notes.Data;
+using System.Collections.Generic;
 
 [assembly: ExportFont("SquarePeg-Regular.ttf", Alias = "SquarePeg"), ExportFont("Akshar-Regular.ttf", Alias = "AksharReg"), 
     ExportFont("LibreBaskerville-Regular.ttf", Alias = "LibreBaskerville"), ExportFont("Pacifico-Regular.ttf", Alias = "Pacifico"),
@@ -23,7 +25,7 @@ namespace Notes
         {
             get
             {
-                if(notesDataBase == null)
+                if (notesDataBase == null)
                     notesDataBase = new NotesDB(Path.Combine(Environment.GetFolderPath
                         (Environment.SpecialFolder.LocalApplicationData), "NotesDataBase.db3"));
 
@@ -56,7 +58,6 @@ namespace Notes
             basket = new BasketPage();
             MainPage = new AppShell();
         }
-
         private static async void SetThemeAsync()
         {
             await Task.Run(() => XamarinTheme.SetTheme());
@@ -70,36 +71,93 @@ namespace Notes
                     File.Create(Path.Combine(FolderPath, "Settings.txt"));
             });
         }
-
         private async void SetSettingsAsync()
         {
             await Task.Run(() =>
             {
-                int value = ReadCornerRadiusFromSettings();
-                if (value == -1)
-                {
-                    Application.Current.Resources["CornerRadiusFrame"] = 30;
-                }
-                else
-                {
-                    Application.Current.Resources["CornerRadiusFrame"] = value;
-                }
+                SettingsData settings = GetUserSettings();
+
+                int cornerRadius = settings.CornerRadius;
+                SetCornerRadius(cornerRadius);
+                SetTitleFont(settings.Fonts.TitleFont);
+                SetDateFont(settings.Fonts.DateFont);
             });
         }
-        private int ReadCornerRadiusFromSettings()
+
+        private void SetCornerRadius(int cornerRadius)
         {
-            string result = File.ReadAllText(Path.Combine(FolderPath, "Settings.txt"));
+            if (cornerRadius == -1)
+                Application.Current.Resources["CornerRadiusFrame"] = 30;
+            else
+                Application.Current.Resources["CornerRadiusFrame"] = cornerRadius;
+        }
+        private void SetTitleFont(string font)
+        {
+            if (font != null && font != "Default")
+                Application.Current.Resources["TitleFont"] = font;
+        }
+        private void SetDateFont(string font)
+        {
+            if(font != null && font != "Default")
+                Application.Current.Resources["DateFont"] = font;
+        }
+        private SettingsData GetUserSettings()
+        {
+            string dataFromSettings = File.ReadAllText(Path.Combine(FolderPath, "Settings.txt"));
 
-            if (string.IsNullOrEmpty(result) == true)
-                return -1;
+            if (string.IsNullOrEmpty(dataFromSettings) == true)
+                return null;
 
-            var list = result.Split(':').ToList();
-            int value;
+            return FillDataInVariable(dataFromSettings);
+        }
+        private SettingsData FillDataInVariable(string dataFromSettings)
+        {
+            var settingsData = new SettingsData();
+            Dictionary<string, string> dictionary = SplitValues(dataFromSettings);
 
-            if (int.TryParse(list[1], out value) == false)
-                throw new ArgumentException("In settings not a value");
+            foreach (var item in dictionary)
+            {
+                string parameter = item.Key, value = item.Value;
 
-            return value;
+                switch (parameter)
+                {
+                    case "CornerRadius":
+                        int corerRadius = ParseFromString(value);
+                        settingsData.CornerRadius = corerRadius;
+                        break;
+                    case "TitleFont":
+                        settingsData.Fonts.TitleFont = value;
+                        break;
+                    case "DateFont":
+                        settingsData.Fonts.DateFont = value;
+                        break;
+                }
+            }
+
+            return settingsData;
+        }
+        private static Dictionary<string, string> SplitValues(string dataFromSettings)
+        {
+            var list = dataFromSettings.Split(' ').ToList();
+            var dictionary = new Dictionary<string, string>();
+
+            foreach(var item in list)
+            {
+                var pair = item.Split(':').ToList();
+                dictionary.Add(pair[0], pair[1]);
+            }
+
+            return dictionary;
+        }
+
+        private int ParseFromString(string value)
+        {
+            int result;
+
+            if (int.TryParse(value, out result) == false)
+                throw new ArgumentException("In corner radius not an integer");
+
+            return result;
         }
 
         protected override void OnStart()

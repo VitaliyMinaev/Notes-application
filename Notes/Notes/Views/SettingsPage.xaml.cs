@@ -15,7 +15,7 @@ namespace Notes.Views
         {
             InitializeComponent();
 
-            CheckRadioButton();
+            CheckRadioButtonsAsync();
         }
 
         protected override void OnAppearing()
@@ -26,14 +26,38 @@ namespace Notes.Views
             SliderCorner.Value = cornerRadius;
         }
 
-        private void CheckRadioButton()
+        private void CheckRadioButtonsAsync()
+        {
+            CheckThemesRadioButtons();
+            CheckFontsRadioButtons("Title");
+            CheckFontsRadioButtons("Date");
+
+            //await Task.Run(() =>
+            //{
+            //    CheckThemesRadioButtons();
+            //    CheckFontsRadioButtons("Title");
+            //    CheckFontsRadioButtons("Date");
+            //});
+        }
+
+        private void CheckFontsRadioButtons(string titleOrDate)
+        {
+            string fontName = Application.Current.Resources["TitleFont"].ToString();
+            RadioButton toCheck = GetCurrentTitleFontRadioBurron(fontName, titleOrDate);
+
+            if (toCheck == null)
+                return;
+
+            MainThread.BeginInvokeOnMainThread(() => toCheck.IsChecked = true);
+        }
+        private void CheckThemesRadioButtons()
         {
             RadioButton radioButton = GetCurrentThemeRadioButton();
 
             if (radioButton == null)
                 throw new Exception("There are not this theme!");
 
-            radioButton.IsChecked = true;
+            MainThread.BeginInvokeOnMainThread(() => radioButton.IsChecked = true);
         }
 
         private RadioButton GetCurrentThemeRadioButton()
@@ -50,6 +74,26 @@ namespace Notes.Views
 
             return null;
         }
+        private RadioButton GetCurrentTitleFontRadioBurron(string fontName, string titleOrDate)
+        {
+            switch (fontName)
+            {
+                case "Default":
+                    return titleOrDate == "Title" ? DefaultRb : DDefaultRb;
+                case "SquarePeg-Regular.ttf":
+                    return titleOrDate == "Title" ? SPRb : DSPRb;
+                case "Akshar-Regular.ttf":
+                    return titleOrDate == "Title" ? ARb : DARb;
+                case "LibreBaskerville-Regular.ttf":
+                    return titleOrDate == "Title" ? LBRb : DLBRb;
+                case "PTSerif-Regular.ttf":
+                    return titleOrDate == "Title" ? PTSRb : DPTSRb;
+                case "RobotoSlab-VariableFont_wght.ttf":
+                    return titleOrDate == "Title" ? RSRb : DRSRb;
+            }
+
+            return null;
+        }
 
         private void RadioButtonSystem_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
@@ -62,7 +106,6 @@ namespace Notes.Views
 
             XamarinTheme.SetTheme();
         }
-
         private static void SetThemeInSettings(string result)
         {
             switch (result)
@@ -95,11 +138,11 @@ namespace Notes.Views
                 int value = (int)SliderCorner.Value;
 
                 Application.Current.Resources["CornerRadiusFrame"] = (int)SliderCorner.Value;
-                File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), $"CornerRadius:{value}");
+                RewriteSettingsInFile();
             });
         }
 
-        private void RadioButtonFonts_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private async void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
@@ -110,32 +153,31 @@ namespace Notes.Views
                 SetDefaultTitleFont();
 
             SetTitleFont(result);
+
+            // await Task.Run(() => RewriteSettingsInFile());
+            RewriteSettingsInFile();
         }
         private static void SetTitleFont(string fontName)
         {
             Application.Current.Resources["TitleFont"] = fontName;
-
-            if(fontName == "LibreBaskerville-Regular.ttf")
-            {
-                Application.Current.Resources["TitleFontSize"] = 16;
-            }
         }
         private static void SetDefaultTitleFont()
         {
             Application.Current.Resources["TitleFont"] = "";
         }
 
-        private void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private async void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
             if (string.IsNullOrEmpty(result) == true)
                 throw new ArgumentException("Doesn't find a radio button with this value");
-
             if (result == "Default")
                 SetDefaultDateFont();
 
             SetDateFont(result);
+            // await Task.Run(() => RewriteSettingsInFile());
+            RewriteSettingsInFile();
         }
         private static void SetDateFont(string fontName)
         {
@@ -144,6 +186,15 @@ namespace Notes.Views
         private static void SetDefaultDateFont()
         {
             Application.Current.Resources["DateFont"] = "";
+        }
+
+        private static void RewriteSettingsInFile()
+        {
+            string dataInFile = $"CornerRadius:{Application.Current.Resources["CornerRadiusFrame"]} " +
+                                    $"TitleFont:{Application.Current.Resources["TitleFont"]} " +
+                                    $"DateFont:{Application.Current.Resources["DateFont"]}";
+
+            File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), dataInFile);
         }
     }
 }

@@ -197,35 +197,35 @@
                 <Frame Style="{StaticResource FrameStyle}" Margin="15, -5, 10, 5" CornerRadius="7">
                     <StackLayout>
                         <Label Text="Select title's font family: " FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-                        <RadioButton Content="Default" Value="Default" TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                                     CheckedChanged="RadioButtonFonts_CheckedChanged" GroupName="TitleFont"/>
-                        <RadioButton Content="SquarePeg-Regular" FontFamily="SquarePeg" Value="SquarePeg-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                                     CheckedChanged="RadioButtonFonts_CheckedChanged" GroupName="TitleFont"/>
-                        <RadioButton Content="Akshar-Regular" FontFamily="AksharReg" Value="Akshar-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                                     CheckedChanged="RadioButtonFonts_CheckedChanged" GroupName="TitleFont"/>
-                        <RadioButton Content="LibreBaskerville-Regular" FontFamily="LibreBaskerville" Value="LibreBaskerville-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                                     CheckedChanged="RadioButtonFonts_CheckedChanged" GroupName="TitleFont"/>
-                        <RadioButton Content="PTSerif-Regular" FontFamily="PTFerif" Value="PTSerif-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                                     CheckedChanged="RadioButtonFonts_CheckedChanged" GroupName="TitleFont"/>
-                        <RadioButton Content="RobotoSlab-VariableFont" FontFamily="RobotoSlab" Value="RobotoSlab-VariableFont_wght.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                                     CheckedChanged="RadioButtonFonts_CheckedChanged" GroupName="TitleFont"/>
+                        <RadioButton x:Name="DefaultRb" Content="Default" Value="Default" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                     CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
+                        <RadioButton x:Name="SPRb" Content="SquarePeg-Regular" FontFamily="SquarePeg" Value="SquarePeg-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                     CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
+                        <RadioButton x:Name="ARb" Content="Akshar-Regular" FontFamily="AksharReg" Value="Akshar-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                     CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
+                        <RadioButton x:Name="LBRb" Content="LibreBaskerville-Regular" FontFamily="LibreBaskerville" Value="LibreBaskerville-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                     CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
+                        <RadioButton x:Name="PTSRb" Content="PTSerif-Regular" FontFamily="PTFerif" Value="PTSerif-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                     CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
+                        <RadioButton x:Name="RSRb" Content="RobotoSlab-VariableFont" FontFamily="RobotoSlab" Value="RobotoSlab-VariableFont_wght.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                                     CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
                     </StackLayout>
                 </Frame>
 
                 <Frame Style="{StaticResource FrameStyle}" Margin="15, 5, 10, 5" CornerRadius="7">
                     <StackLayout>
                         <Label Text="Select date's font family: " FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-                        <RadioButton Content="Default" Value="Default" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                        <RadioButton x:Name="DDefaultRb" Content="Default" Value="Default" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
-                        <RadioButton Content="SquarePeg-Regular" FontFamily="SquarePeg" Value="SquarePeg-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                        <RadioButton x:Name="DSPRb" Content="SquarePeg-Regular" FontFamily="SquarePeg" Value="SquarePeg-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
-                        <RadioButton Content="Akshar-Regular" FontFamily="AksharReg" Value="Akshar-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                        <RadioButton x:Name="DARb" Content="Akshar-Regular" FontFamily="AksharReg" Value="Akshar-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
-                        <RadioButton Content="LibreBaskerville-Regular" FontFamily="LibreBaskerville" Value="LibreBaskerville-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                        <RadioButton x:Name="DLBRb" Content="LibreBaskerville-Regular" FontFamily="LibreBaskerville" Value="LibreBaskerville-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
-                        <RadioButton Content="PTSerif-Regular" FontFamily="PTFerif" Value="PTSerif-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                        <RadioButton x:Name="DPTSRb" Content="PTSerif-Regular" FontFamily="PTFerif" Value="PTSerif-Regular.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
-                        <RadioButton Content="RobotoSlab-VariableFont" FontFamily="RobotoSlab" Value="RobotoSlab-VariableFont_wght.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                        <RadioButton x:Name="DRSRb" Content="RobotoSlab-VariableFont" FontFamily="RobotoSlab" Value="RobotoSlab-VariableFont_wght.ttf" TextColor="{AppThemeBinding Dark=White, Light=Black}"
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
                     </StackLayout>
                 </Frame>
