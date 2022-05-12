@@ -7,7 +7,6 @@ using Notes.Models;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using System.Linq;
-using Notes.Data;
 using System.Collections.Generic;
 
 [assembly: ExportFont("SquarePeg-Regular.ttf", Alias = "SquarePeg"), ExportFont("Akshar-Regular.ttf", Alias = "AksharReg"), 
@@ -69,6 +68,11 @@ namespace Notes
             {
                 if (File.Exists(Path.Combine(FolderPath, "Settings.txt")) == false)
                     File.Create(Path.Combine(FolderPath, "Settings.txt"));
+
+                string dataFromSettings = File.ReadAllText(Path.Combine(FolderPath, "Settings.txt"));
+
+                if (string.IsNullOrEmpty(dataFromSettings) == true)
+                    SetDefaultSettings();
             });
         }
         private async void SetSettingsAsync()
@@ -77,11 +81,23 @@ namespace Notes
             {
                 SettingsData settings = GetUserSettings();
 
-                int cornerRadius = settings.CornerRadius;
-                SetCornerRadius(cornerRadius);
-                SetTitleFont(settings.Fonts.TitleFont);
-                SetDateFont(settings.Fonts.DateFont);
+                if (settings != null)
+                {
+                    int cornerRadius = settings.CornerRadius;
+                    SetCornerRadius(cornerRadius);
+                    SetTitleFont(settings.Fonts.TitleFont);
+                    SetDateFont(settings.Fonts.DateFont);
+                }
             });
+        }
+
+        private static void SetDefaultSettings()
+        {
+            string dataInFile = $"CornerRadius:30 " +
+                                    $"TitleFont:{Application.Current.Resources["TitleFont"]} " +
+                                    $"DateFont:{Application.Current.Resources["DateFont"]}";
+
+            File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), dataInFile);
         }
 
         private void SetCornerRadius(int cornerRadius)

@@ -29,27 +29,28 @@ namespace Notes.Views
         private void CheckRadioButtonsAsync()
         {
             CheckThemesRadioButtons();
-            CheckFontsRadioButtons("Title");
-            CheckFontsRadioButtons("Date");
-
-            //await Task.Run(() =>
-            //{
-            //    CheckThemesRadioButtons();
-            //    CheckFontsRadioButtons("Title");
-            //    CheckFontsRadioButtons("Date");
-            //});
+            CheckFontsRadioButtons();
         }
 
-        private void CheckFontsRadioButtons(string titleOrDate)
+        private void CheckFontsRadioButtons()
         {
-            string fontName = Application.Current.Resources["TitleFont"].ToString();
-            RadioButton toCheck = GetCurrentTitleFontRadioBurron(fontName, titleOrDate);
+            string titleFontName = Application.Current.Resources["TitleFont"].ToString();
+            string dateFontName = Application.Current.Resources["DateFont"].ToString();
 
+            RadioButton title = GetCurrentTitleFontRadioBurron(titleFontName, "Title");
+            CheckRadioButton(title, titleFontName);
+
+            RadioButton date = GetCurrentTitleFontRadioBurron(dateFontName, "Date");
+            CheckRadioButton(date, dateFontName);
+        }
+
+        private void CheckRadioButton(RadioButton toCheck, string titleFontName)
+        {
             if (toCheck == null)
                 return;
-
             MainThread.BeginInvokeOnMainThread(() => toCheck.IsChecked = true);
         }
+
         private void CheckThemesRadioButtons()
         {
             RadioButton radioButton = GetCurrentThemeRadioButton();
@@ -142,7 +143,7 @@ namespace Notes.Views
             });
         }
 
-        private async void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
@@ -166,7 +167,7 @@ namespace Notes.Views
             Application.Current.Resources["TitleFont"] = "";
         }
 
-        private async void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
