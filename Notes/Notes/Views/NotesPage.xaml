@@ -13,6 +13,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="unlock.png" Clicked="ToolBarItem_Lock_Clicked"/>
         <ToolbarItem Icon="AddImage.png" Clicked="ButtonClicked"/>
     </ContentPage.ToolbarItems>
 

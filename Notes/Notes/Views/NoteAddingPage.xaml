@@ -58,7 +58,7 @@
 
                 <Frame Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
                        BackgroundColor="Transparent">
-                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="370" Margin="2, 0" Keyboard="Text"
+                    <controls:CustomEditor Text="{Binding AddingNote.Text}" HeightRequest="360" Margin="2, 0" Keyboard="Text"
                                            TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, 
                                                                         Dark={StaticResource TextColorDark}}"
                                            BackgroundColor="Transparent" FontFamily="{DynamicResource TitleFont}"/>
@@ -84,8 +84,8 @@
 
                     <Button x:Name="CollorButton"
                         BorderWidth="1"
-                        WidthRequest="40"
-                        HeightRequest="40"
+                        WidthRequest="45"
+                        HeightRequest="45"
                         CornerRadius="{DynamicResource CornerRadiusFrame}"
                         VerticalOptions="Center"
                         HorizontalOptions="Start"
@@ -96,7 +96,7 @@
                     
                 </StackLayout>
                 
-                <Button Text="Save" Clicked="ButtonSave_Clicked" 
+                <Button Text="Save" Clicked="ButtonSave_Clicked" HeightRequest="45"
                         HorizontalOptions="Fill" Margin="3, 0, 0, 0"
                         BorderColor="{AppThemeBinding Light={StaticResource BorderColorLight}, Dark={StaticResource BorderColorDark}}"
                         BackgroundColor="Transparent"

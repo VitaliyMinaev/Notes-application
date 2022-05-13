@@ -51,11 +51,12 @@ namespace Notes
         {
             InitializeComponent();
 
+            basket = new BasketPage();
+
+            MainPage = new AppShell();
+
             CheckExistingFileOrCreateNewAsync();
             SetThemeAsync();
-
-            basket = new BasketPage();
-            MainPage = new AppShell();
         }
         private static async void SetThemeAsync()
         {

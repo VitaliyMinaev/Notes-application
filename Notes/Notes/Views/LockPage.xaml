@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Notes.ViewModels"
+             x:Class="Notes.Views.LockPage"
+             BackgroundImageSource="{AppThemeBinding Light=BackgroundImage.jfif, Dark=darkImageBackGround.jpg}"
+             BackgroundColor="Transparent"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <local:PasscodeViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Image Source="lockIm.png" WidthRequest="100" HeightRequest="100" Margin="20"/>
+            <Label Text="Enter your passcode" FontSize="16" HorizontalOptions="CenterAndExpand"
+                   TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+            <Entry x:Name="EntryPasscode" IsPassword="True" BackgroundColor="Transparent" Margin="10, 30, 10, 10" FontSize="30" Keyboard="Numeric" Text="{Binding Passcode}"
+                   HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
+                                                                                Dark={StaticResource TextColorDark}}" IsReadOnly="True"/>
+
+            <Grid Margin="40, 10, 40, 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="1" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="0" Grid.Column="0" Clicked="ButtonNumber_Clicked" CommandParameter="1"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="2" FontSize="24"  BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="0" Grid.Column="1" Clicked="ButtonNumber_Clicked" CommandParameter="2"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="3" FontSize="24"  BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="0" Grid.Column="2" Clicked="ButtonNumber_Clicked" CommandParameter="3"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+
+                <Button Text="4" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="1" Grid.Column="0" Clicked="ButtonNumber_Clicked" CommandParameter="4"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="5" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="1" Grid.Column="1" Clicked="ButtonNumber_Clicked" CommandParameter="5"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="6" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="1" Grid.Column="2" Clicked="ButtonNumber_Clicked" CommandParameter="6"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+
+                <Button Text="7" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="2" Grid.Column="0" Clicked="ButtonNumber_Clicked" CommandParameter="7"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="8" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="2" Grid.Column="1" Clicked="ButtonNumber_Clicked" CommandParameter="8"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="9" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="2" Grid.Column="2" Clicked="ButtonNumber_Clicked" CommandParameter="9"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+
+                <Button Text="0" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
+                        WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
+                        Grid.Row="3" Grid.Column="1" Clicked="ButtonNumber_Clicked" CommandParameter="9"
+                        TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Button Text="⌫" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ButtonRemove_Clicked" BackgroundColor="Transparent"
+                        FontSize="24" Grid.Row="3" Grid.Column="2" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

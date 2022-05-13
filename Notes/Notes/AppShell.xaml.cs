@@ -10,8 +10,6 @@ namespace Notes
         public AppShell()
         {
             InitializeComponent();
-
-            Routing.RegisterRoute(nameof(NoteAddingPage), typeof(NoteAddingPage));
         }
     }
 }

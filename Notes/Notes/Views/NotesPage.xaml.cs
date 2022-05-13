@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using Notes.ViewModel;
 using Xamarin.CommunityToolkit.Extensions;
 using Notes;
+using System.Threading.Tasks;
 
 namespace Notes.Views
 {
@@ -19,17 +20,20 @@ namespace Notes.Views
         protected override void OnAppearing()
         {
             MessagingCenter.Send(this, nameof(NotesPage));
-            ShowOrHideControls();
+            ShowOrHideControlsAsync();
         }
 
-        private void ShowOrHideControls()
+        private async void ShowOrHideControlsAsync()
         {
-            var notes = ((NotesListViewModel)BindingContext).Notes;
+            await Task.Run(() =>
+            {
+                var notes = ((NotesListViewModel)BindingContext).Notes;
 
-            if (notes.Count == 0)
-                HideListViewShowLabel();
-            else
-                HideLabelShowListView();
+                if (notes.Count == 0)
+                    HideListViewShowLabel();
+                else
+                    HideLabelShowListView();
+            });
 
         }
 
@@ -40,7 +44,6 @@ namespace Notes.Views
             FrameLabel.IsVisible = false;
             LabelNoElements.IsVisible = false;
         }
-
         private void HideListViewShowLabel()
         {
             noteList.IsVisible = false;
@@ -109,10 +112,9 @@ namespace Notes.Views
             MessagingCenter.Send(this, nameof(NotesListViewModel), colorNote);
         }
 
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        private async void ToolBarItem_Lock_Clicked(object sender, EventArgs e)
         {
-             int cornerRadius = new Random().Next(1, 30);
-             Application.Current.Resources["CornerRadiusFrame"] = cornerRadius;
+            await Navigation.PushAsync(new LockPage());
         }
     }
 }

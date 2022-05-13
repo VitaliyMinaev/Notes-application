@@ -85,7 +85,7 @@
             </StackLayout>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
-
+    
     <FlyoutItem Title="Notes" Icon="bookmark.png">
         <ShellContent 
             ContentTemplate="{DataTemplate views:NotesPage}">

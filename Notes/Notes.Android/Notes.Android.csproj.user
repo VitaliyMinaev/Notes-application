@@ -4,7 +4,7 @@
     <SelectedDevice>Samsung SM-M315F</SelectedDevice>
     <ActiveDebugProfile>Samsung SM-M315F</ActiveDebugProfile>
     <DefaultDevice>pixel_2_pie_9_0_-_api_28</DefaultDevice>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>
