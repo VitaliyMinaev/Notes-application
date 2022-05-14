@@ -46,16 +46,19 @@ namespace Notes
         {
             get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }
+        public static bool IsLocked { get; set; }
 
         public App()
         {
             InitializeComponent();
 
             basket = new BasketPage();
-
             MainPage = new AppShell();
 
+            IsLocked = false;
+
             CheckExistingFileOrCreateNewAsync();
+            SetSettingsAsync();
             SetThemeAsync();
         }
         private static async void SetThemeAsync()
@@ -88,6 +91,7 @@ namespace Notes
                     SetCornerRadius(cornerRadius);
                     SetTitleFont(settings.Fonts.TitleFont);
                     SetDateFont(settings.Fonts.DateFont);
+                    SetIsLocked(settings.IsLocked);
                 }
             });
         }
@@ -118,6 +122,11 @@ namespace Notes
             if(font != null && font != "Default")
                 Application.Current.Resources["DateFont"] = font;
         }
+        private void SetIsLocked(bool isLocked)
+        {
+            IsLocked = isLocked;
+        }
+
         private SettingsData GetUserSettings()
         {
             string dataFromSettings = File.ReadAllText(Path.Combine(FolderPath, "Settings.txt"));
@@ -147,6 +156,9 @@ namespace Notes
                         break;
                     case "DateFont":
                         settingsData.Fonts.DateFont = value;
+                        break;
+                    case "IsLocked":
+                        settingsData.IsLocked = bool.Parse(value);
                         break;
                 }
             }
@@ -179,7 +191,6 @@ namespace Notes
 
         protected override void OnStart()
         {
-            SetSettingsAsync();
             SetThemeAndAddHandler();
         }
 

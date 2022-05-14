@@ -6,21 +6,33 @@ using Notes.ViewModel;
 using Xamarin.CommunityToolkit.Extensions;
 using Notes;
 using System.Threading.Tasks;
+using Notes.Data;
 
 namespace Notes.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotesPage : ContentPage
     {
+        private static int _onAppearingCounter;
         public NotesPage()
         {
             InitializeComponent();
+            CheckIsLockedAsync();
         }
 
-        protected override void OnAppearing()
+        private async Task CheckIsLockedAsync()
         {
+            if (App.IsLocked == true)
+                await Navigation.PushAsync(new LockPage());
+        }
+
+        protected override async void OnAppearing()
+        {
+            // Circle color messaging center
             MessagingCenter.Send(this, nameof(NotesPage));
             ShowOrHideControlsAsync();
+
+            _onAppearingCounter += 1;
         }
 
         private async void ShowOrHideControlsAsync()
@@ -114,7 +126,15 @@ namespace Notes.Views
 
         private async void ToolBarItem_Lock_Clicked(object sender, EventArgs e)
         {
+            App.IsLocked = true;
             await Navigation.PushAsync(new LockPage());
+
+            await Task.Run(() =>
+            {
+                SettingsData settings = SettingsGroupHandler.GroupSettings(); 
+                var fileHandler = SettingsFileHandler.GetInstance();
+                fileHandler.RewriteSettingsFile(settings);
+            });
         }
     }
 }

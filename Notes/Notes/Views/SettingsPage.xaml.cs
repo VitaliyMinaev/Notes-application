@@ -1,4 +1,5 @@
-﻿using Notes.Models;
+﻿using Notes.Data;
+using Notes.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace Notes.Views
         public SettingsPage()
         {
             InitializeComponent();
-
             CheckRadioButtonsAsync();
         }
 
@@ -31,7 +31,6 @@ namespace Notes.Views
             CheckThemesRadioButtons();
             CheckFontsRadioButtons();
         }
-
         private void CheckFontsRadioButtons()
         {
             string titleFontName = Application.Current.Resources["TitleFont"].ToString();
@@ -43,14 +42,12 @@ namespace Notes.Views
             RadioButton date = GetCurrentTitleFontRadioBurron(dateFontName, "Date");
             CheckRadioButton(date, dateFontName);
         }
-
         private void CheckRadioButton(RadioButton toCheck, string titleFontName)
         {
             if (toCheck == null)
                 return;
             MainThread.BeginInvokeOnMainThread(() => toCheck.IsChecked = true);
         }
-
         private void CheckThemesRadioButtons()
         {
             RadioButton radioButton = GetCurrentThemeRadioButton();
@@ -137,26 +134,31 @@ namespace Notes.Views
             await Task.Run(() =>
             {
                 int value = (int)SliderCorner.Value;
-
                 Application.Current.Resources["CornerRadiusFrame"] = (int)SliderCorner.Value;
-                RewriteSettingsInFile();
+
+                SettingsData settings = GroupSettings();
+                var settingsHandler = SettingsFileHandler.GetInstance();
+                settingsHandler.RewriteSettingsFile(settings);
             });
         }
 
-        private void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private async void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
-            if (string.IsNullOrEmpty(result) == true)
-                throw new ArgumentException("Doesn't find a radio button with this value");
+            await Task.Run(() =>
+            {
+                if (string.IsNullOrEmpty(result) == true)
+                    throw new ArgumentException("Doesn't find a radio button with this value");
+                if (result == "Default")
+                    SetDefaultTitleFont();
 
-            if (result == "Default")
-                SetDefaultTitleFont();
+                SetTitleFont(result);
 
-            SetTitleFont(result);
-
-            // await Task.Run(() => RewriteSettingsInFile());
-            RewriteSettingsInFile();
+                SettingsData settings = GroupSettings();
+                var settingsHandler = SettingsFileHandler.GetInstance();
+                settingsHandler.RewriteSettingsFile(settings);
+            });
         }
         private static void SetTitleFont(string fontName)
         {
@@ -167,18 +169,23 @@ namespace Notes.Views
             Application.Current.Resources["TitleFont"] = "";
         }
 
-        private void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private async void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
-            if (string.IsNullOrEmpty(result) == true)
-                throw new ArgumentException("Doesn't find a radio button with this value");
-            if (result == "Default")
-                SetDefaultDateFont();
+            await Task.Run(() =>
+            {
+                if (string.IsNullOrEmpty(result) == true)
+                    throw new ArgumentException("Doesn't find a radio button with this value");
+                if (result == "Default")
+                    SetDefaultDateFont();
 
-            SetDateFont(result);
-            // await Task.Run(() => RewriteSettingsInFile());
-            RewriteSettingsInFile();
+                SetDateFont(result);
+
+                SettingsData settings = GroupSettings();
+                var settingsHandler = SettingsFileHandler.GetInstance();
+                settingsHandler.RewriteSettingsFile(settings);
+            });
         }
         private static void SetDateFont(string fontName)
         {
@@ -189,13 +196,10 @@ namespace Notes.Views
             Application.Current.Resources["DateFont"] = "";
         }
 
-        private static void RewriteSettingsInFile()
+        private static SettingsData GroupSettings()
         {
-            string dataInFile = $"CornerRadius:{Application.Current.Resources["CornerRadiusFrame"]} " +
-                                    $"TitleFont:{Application.Current.Resources["TitleFont"]} " +
-                                    $"DateFont:{Application.Current.Resources["DateFont"]}";
-
-            File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), dataInFile);
+            var settings = SettingsGroupHandler.GroupSettings();
+            return settings;
         }
     }
 }

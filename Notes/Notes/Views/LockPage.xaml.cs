@@ -15,29 +15,29 @@ namespace Notes.Views
         public LockPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private async void ButtonNumber_Clicked(object sender, EventArgs e)
+        private void ButtonNumber_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
             string commandParameter = (string)button.CommandParameter;
 
             ((PasscodeViewModel)BindingContext).Passcode += commandParameter;
 
-            await CheckPasscode();
+            CheckPasscodeAsync();
         }
 
-        private async Task CheckPasscode()
+        private async void CheckPasscodeAsync()
         {
-            await Task.Run(() =>
+            bool isCorrect = IsCorrectAsync();
+            if (isCorrect == true)
             {
-                if (IsCorrect() == true)
-                    Navigation.PopAsync();
-            });
+                App.IsLocked = false;
+                await Navigation.PopAsync();
+            }
         }
 
-        private bool IsCorrect()
+        private bool IsCorrectAsync()
         {
             if (((PasscodeViewModel)BindingContext).Passcode == "7518")
                 return true;
