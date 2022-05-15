@@ -1,7 +1,6 @@
 ﻿using Notes.Data;
 using Notes.Models;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -142,23 +141,20 @@ namespace Notes.Views
             });
         }
 
-        private async void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void RadioButtonFontsTitle_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
-            await Task.Run(() =>
-            {
-                if (string.IsNullOrEmpty(result) == true)
-                    throw new ArgumentException("Doesn't find a radio button with this value");
-                if (result == "Default")
-                    SetDefaultTitleFont();
+            if (string.IsNullOrEmpty(result) == true)
+                throw new ArgumentException("Doesn't find a radio button with this value");
+            if (result == "Default")
+                SetDefaultTitleFont();
 
-                SetTitleFont(result);
+            SetTitleFont(result);
 
-                SettingsData settings = GroupSettings();
-                var settingsHandler = SettingsFileHandler.GetInstance();
-                settingsHandler.RewriteSettingsFile(settings);
-            });
+            SettingsData settings = GroupSettings();
+            var settingsHandler = SettingsFileHandler.GetInstance();
+            settingsHandler.RewriteSettingsFile(settings);
         }
         private static void SetTitleFont(string fontName)
         {
@@ -169,23 +165,20 @@ namespace Notes.Views
             Application.Current.Resources["TitleFont"] = "";
         }
 
-        private async void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void RadioButtonFontsDate_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             string result = (string)((RadioButton)sender).Value;
 
-            await Task.Run(() =>
-            {
-                if (string.IsNullOrEmpty(result) == true)
-                    throw new ArgumentException("Doesn't find a radio button with this value");
-                if (result == "Default")
-                    SetDefaultDateFont();
+            if (string.IsNullOrEmpty(result) == true)
+                throw new ArgumentException("Doesn't find a radio button with this value");
+            if (result == "Default")
+                SetDefaultDateFont();
 
-                SetDateFont(result);
+            SetDateFont(result);
 
-                SettingsData settings = GroupSettings();
-                var settingsHandler = SettingsFileHandler.GetInstance();
-                settingsHandler.RewriteSettingsFile(settings);
-            });
+            SettingsData settings = GroupSettings();
+            var settingsHandler = SettingsFileHandler.GetInstance();
+            settingsHandler.RewriteSettingsFile(settings);
         }
         private static void SetDateFont(string fontName)
         {
@@ -200,6 +193,16 @@ namespace Notes.Views
         {
             var settings = SettingsGroupHandler.GroupSettings();
             return settings;
+        }
+
+        private void ButtonPassocode_Save(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            // FramePassocode.IsVisible = ((CheckBox)sender).IsChecked;
         }
     }
 }

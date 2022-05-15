@@ -99,7 +99,7 @@
                     <Button Text="Save" Clicked="ButtonSave_Clicked" HeightRequest="45"
                         HorizontalOptions="Fill" Margin="3, 0, 0, 0"
                         BorderColor="{AppThemeBinding Light={StaticResource BorderColorLight}, Dark={StaticResource BorderColorDark}}"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark= {StaticResource FrameBackgroundColorDark}}"
                         TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, 
                                                                         Dark={StaticResource TextColorDark}}"
                         BorderRadius="5"

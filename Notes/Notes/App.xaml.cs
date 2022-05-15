@@ -46,7 +46,7 @@ namespace Notes
         {
             get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }
-        public static bool IsLocked { get; set; }
+        public static LockEntity IsLocked { get; set; }
 
         public App()
         {
@@ -55,7 +55,7 @@ namespace Notes
             basket = new BasketPage();
             MainPage = new AppShell();
 
-            IsLocked = false;
+            IsLocked = LockEntity.Undefined;
 
             CheckExistingFileOrCreateNewAsync();
             SetSettingsAsync();
@@ -91,18 +91,15 @@ namespace Notes
                     SetCornerRadius(cornerRadius);
                     SetTitleFont(settings.Fonts.TitleFont);
                     SetDateFont(settings.Fonts.DateFont);
-                    SetIsLocked(settings.IsLocked);
+                    SetIsLocked(settings.Locked);
                 }
             });
         }
 
         private static void SetDefaultSettings()
         {
-            string dataInFile = $"CornerRadius:30 " +
-                                    $"TitleFont:{Application.Current.Resources["TitleFont"]} " +
-                                    $"DateFont:{Application.Current.Resources["DateFont"]}";
-
-            File.WriteAllText(Path.Combine(App.FolderPath, "Settings.txt"), dataInFile);
+            var settingsHandler = SettingsFileHandler.GetInstance();
+            settingsHandler.ClearSettingsFile();
         }
 
         private void SetCornerRadius(int cornerRadius)
@@ -122,9 +119,9 @@ namespace Notes
             if(font != null && font != "Default")
                 Application.Current.Resources["DateFont"] = font;
         }
-        private void SetIsLocked(bool isLocked)
+        private void SetIsLocked(LockEntity locked)
         {
-            IsLocked = isLocked;
+            IsLocked = locked;
         }
 
         private SettingsData GetUserSettings()
@@ -158,7 +155,7 @@ namespace Notes
                         settingsData.Fonts.DateFont = value;
                         break;
                     case "IsLocked":
-                        settingsData.IsLocked = bool.Parse(value);
+                        settingsData.Locked = GetLockEntity(value);
                         break;
                 }
             }
@@ -179,6 +176,20 @@ namespace Notes
             return dictionary;
         }
 
+        private LockEntity GetLockEntity(string value)
+        {
+            switch (value)
+            {
+                case "Undefined":
+                    return LockEntity.Undefined;
+                case "Locked":
+                    return LockEntity.Locked;
+                case "Unlocked":
+                    return LockEntity.Unlocked;
+            }
+
+            throw new ArgumentException($"LockEntity does'n has this({value}) value");
+        }
         private int ParseFromString(string value)
         {
             int result;

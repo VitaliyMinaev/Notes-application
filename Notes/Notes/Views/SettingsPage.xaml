@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.SettingsPage"
-             xmlns:local="clr-namespace:Notes.Views"
+             xmlns:local="clr-namespace:Notes.Views" 
+             xmlns:controls="clr-namespace:Notes.CustomItems"
+             xmlns:vm="clr-namespace:Notes.ViewModels"
              Title="Settings" 
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
                                                Dark={StaticResource BackgroundColorDark}}">
@@ -30,7 +32,7 @@
                                                                      Dark={StaticResource SettingsFrameColorDark}}"/>
                                     <Setter Property="BorderColor"
                                             Value="Red" />
-                                    
+
                                     <Setter Property="WidthRequest" Value="100"/>
                                     <Setter Property="HeightRequest" Value="100"/>
 
@@ -91,7 +93,20 @@
             <Setter Property="ControlTemplate"
                     Value="{DynamicResource RadioButtonTemplate}" />
         </Style>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="HeightRequest" Value="44"></Setter>
+            <Setter Property="Margin" Value="3,0,3,0"></Setter>
+        </Style>
+        <Style x:Key="FrameEntryStyle" TargetType="Frame">
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
     </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:DisplayPasscodeViewModel/>
+    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <ScrollView>
@@ -211,7 +226,6 @@
                                      CheckedChanged="RadioButtonFontsTitle_CheckedChanged" GroupName="TitleFont"/>
                     </StackLayout>
                 </Frame>
-
                 <Frame Style="{StaticResource FrameStyle}" Margin="15, 5, 10, 5" CornerRadius="7">
                     <StackLayout>
                         <Label Text="Select date's font family: " FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
@@ -229,6 +243,11 @@
                                      CheckedChanged="RadioButtonFontsDate_CheckedChanged" GroupName="DateFont"/>
                     </StackLayout>
                 </Frame>
+
+                <StackLayout Orientation="Horizontal" Margin="10, 5, 5, 0">
+                    <CheckBox CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsChecked}"/>
+                    <Label x:Name="PasscodeLabel" Text="Add the passcode?" FontSize="22" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

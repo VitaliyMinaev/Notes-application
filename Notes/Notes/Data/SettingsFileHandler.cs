@@ -13,7 +13,6 @@ namespace Notes.Data
     {
         private string _fileName;
         private static SettingsFileHandler _instance;
-        private static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
         SettingsFileHandler(string fileName)
         {
@@ -32,11 +31,18 @@ namespace Notes.Data
             string dataInFile = $"CornerRadius:{settings.CornerRadius} " +
                                         $"TitleFont:{settings.Fonts.TitleFont} " +
                                         $"DateFont:{settings.Fonts.DateFont} " +
-                                        $"IsLocked:{settings.IsLocked}";
+                                        $"IsLocked:{settings.Locked}";
 
-            semaphoreSlim.WaitAsync();
             File.WriteAllText(Path.Combine(App.FolderPath, _fileName), dataInFile);
-            semaphoreSlim.Release();
+        }
+        public void ClearSettingsFile()
+        {
+            string dataInFile = $"CornerRadius:30 " +
+                                        $"TitleFont:Default " +
+                                        $"DateFont:Default " +
+                                        $"IsLocked:{LockEntity.Undefined}";
+
+            File.WriteAllText(Path.Combine(App.FolderPath, _fileName), dataInFile);
         }
     }
 }

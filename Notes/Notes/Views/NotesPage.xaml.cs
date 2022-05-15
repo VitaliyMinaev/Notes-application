@@ -13,7 +13,6 @@ namespace Notes.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotesPage : ContentPage
     {
-        private static int _onAppearingCounter;
         public NotesPage()
         {
             InitializeComponent();
@@ -22,17 +21,15 @@ namespace Notes.Views
 
         private async Task CheckIsLockedAsync()
         {
-            if (App.IsLocked == true)
+            if (App.IsLocked == LockEntity.Locked)
                 await Navigation.PushAsync(new LockPage());
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             // Circle color messaging center
             MessagingCenter.Send(this, nameof(NotesPage));
             ShowOrHideControlsAsync();
-
-            _onAppearingCounter += 1;
         }
 
         private async void ShowOrHideControlsAsync()
@@ -126,7 +123,7 @@ namespace Notes.Views
 
         private async void ToolBarItem_Lock_Clicked(object sender, EventArgs e)
         {
-            App.IsLocked = true;
+            App.IsLocked = LockEntity.Locked;
             await Navigation.PushAsync(new LockPage());
 
             await Task.Run(() =>

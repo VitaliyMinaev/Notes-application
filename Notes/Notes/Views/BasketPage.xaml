@@ -25,7 +25,7 @@
 
             <ListView x:Name ="basketList" SelectionMode="Single" HasUnevenRows="True" ItemsSource="{Binding BasketNotes}"
                       SeparatorColor="{AppThemeBinding Light=Gray, Dark=Black}">
-                
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -58,18 +58,12 @@
                                                           CommandParameter="{Binding NoteId}"/>
                                     </Image.GestureRecognizers>
                                 </Image>
-                                
+
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <Button Text="Delete all" CornerRadius="30" Margin="20" Font="16" Clicked="Button_Clicked"
-                    BackgroundColor="Transparent" BorderWidth="2"
-                    TextColor="{AppThemeBinding Light=DodgerBlue, Dark=White}" 
-                    BorderColor="{AppThemeBinding Light=DodgerBlue, Dark=White}"/>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

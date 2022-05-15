@@ -11,7 +11,7 @@ namespace Notes.Data
             settings.CornerRadius = (int)Application.Current.Resources["CornerRadiusFrame"];
             settings.Fonts.TitleFont = Application.Current.Resources["TitleFont"].ToString();
             settings.Fonts.DateFont = Application.Current.Resources["DateFont"].ToString();
-            settings.IsLocked = App.IsLocked;
+            settings.Locked = App.IsLocked;
 
             return settings;
         }

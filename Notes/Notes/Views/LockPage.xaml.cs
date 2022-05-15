@@ -32,7 +32,7 @@ namespace Notes.Views
             bool isCorrect = IsCorrectAsync();
             if (isCorrect == true)
             {
-                App.IsLocked = false;
+                App.IsLocked = Data.LockEntity.Unlocked;
                 await Navigation.PopAsync();
             }
         }
