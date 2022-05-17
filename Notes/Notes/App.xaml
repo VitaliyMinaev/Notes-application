@@ -84,6 +84,9 @@
                 <OnPlatform.Android>15</OnPlatform.Android>
             </OnPlatform>
 
+            <OnPlatform x:Key="PasscodeMD5" x:TypeArguments="x:String" Default="None">
+            </OnPlatform>
+
             <Style x:Key="DateFontStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{DynamicResource DateFont}"/>
                 <Setter Property="FontSize" Value="{DynamicResource DateFontSize}"/>

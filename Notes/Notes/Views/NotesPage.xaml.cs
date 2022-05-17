@@ -19,10 +19,19 @@ namespace Notes.Views
             CheckIsLockedAsync();
         }
 
-        private async Task CheckIsLockedAsync()
+        private async void CheckIsLockedAsync()
         {
             if (App.IsLocked == LockEntity.Locked)
                 await Navigation.PushAsync(new LockPage());
+        }
+
+        private bool CheckExistingPasscode()
+        {
+            string passcode = ((OnPlatform<string>)Application.Current.Resources["PasscodeMD5"]).Default;
+
+            if (passcode != "None")
+                return true;
+            return false;
         }
 
         protected override void OnAppearing()
@@ -123,15 +132,19 @@ namespace Notes.Views
 
         private async void ToolBarItem_Lock_Clicked(object sender, EventArgs e)
         {
+            if (CheckExistingPasscode() == false)
+                return;
+
             App.IsLocked = LockEntity.Locked;
-            await Navigation.PushAsync(new LockPage());
 
             await Task.Run(() =>
             {
-                SettingsData settings = SettingsGroupHandler.GroupSettings(); 
+                SettingsData settings = SettingsGroupHandler.GroupSettings();
                 var fileHandler = SettingsFileHandler.GetInstance();
                 fileHandler.RewriteSettingsFile(settings);
             });
+
+            await Navigation.PushAsync(new LockPage());
         }
     }
 }

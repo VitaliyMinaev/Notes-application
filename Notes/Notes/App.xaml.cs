@@ -92,6 +92,7 @@ namespace Notes
                     SetTitleFont(settings.Fonts.TitleFont);
                     SetDateFont(settings.Fonts.DateFont);
                     SetIsLocked(settings.Locked);
+                    SetPasscode(settings.Passcode);
                 }
             });
         }
@@ -122,6 +123,11 @@ namespace Notes
         private void SetIsLocked(LockEntity locked)
         {
             IsLocked = locked;
+        }
+        private void SetPasscode(string passcode)
+        {
+            if(string.IsNullOrEmpty(passcode) == false)
+                ((OnPlatform<string>)Application.Current.Resources["PasscodeMD5"]).Default = passcode;
         }
 
         private SettingsData GetUserSettings()
@@ -156,6 +162,9 @@ namespace Notes
                         break;
                     case "IsLocked":
                         settingsData.Locked = GetLockEntity(value);
+                        break;
+                    case "Passcode":
+                        settingsData.Passcode = value;
                         break;
                 }
             }

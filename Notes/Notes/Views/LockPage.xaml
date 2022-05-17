@@ -79,6 +79,8 @@
                 <Button Text="⌫" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ButtonRemove_Clicked" BackgroundColor="Transparent"
                         FontSize="24" Grid.Row="3" Grid.Column="2" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
             </Grid>
+
+            <Button Style="{StaticResource ButtonStyle}" Margin="15" Text="Enter" Clicked="ButtonEnter_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

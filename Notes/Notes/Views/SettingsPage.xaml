@@ -103,10 +103,6 @@
             <Setter Property="CornerRadius" Value="5" />
         </Style>
     </ContentPage.Resources>
-
-    <ContentPage.BindingContext>
-        <vm:DisplayPasscodeViewModel/>
-    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <ScrollView>
@@ -244,10 +240,12 @@
                     </StackLayout>
                 </Frame>
 
-                <StackLayout Orientation="Horizontal" Margin="10, 5, 5, 0">
-                    <CheckBox CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsChecked}"/>
-                    <Label x:Name="PasscodeLabel" Text="Add the passcode?" FontSize="22" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
-                </StackLayout>
+                <Label Text="Manage your passcode" FontSize="22" Margin="15, 5, -5, 10" HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Dark=DodgerBlue, Light=DodgerBlue}" TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizerPasscode_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

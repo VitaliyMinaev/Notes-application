@@ -31,7 +31,8 @@ namespace Notes.Data
             string dataInFile = $"CornerRadius:{settings.CornerRadius} " +
                                         $"TitleFont:{settings.Fonts.TitleFont} " +
                                         $"DateFont:{settings.Fonts.DateFont} " +
-                                        $"IsLocked:{settings.Locked}";
+                                        $"IsLocked:{settings.Locked} " +
+                                        $"Passcode:{settings.Passcode}";
 
             File.WriteAllText(Path.Combine(App.FolderPath, _fileName), dataInFile);
         }

@@ -1,9 +1,12 @@
-﻿using Notes.ViewModels;
+﻿using Notes.Data;
+using Notes.Hashing;
+using Notes.ViewModels;
 using System;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace Notes.Views
@@ -11,7 +14,6 @@ namespace Notes.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LockPage : ContentPage
     {
-        public string Passcode { get; set; }
         public LockPage()
         {
             InitializeComponent();
@@ -23,23 +25,37 @@ namespace Notes.Views
             string commandParameter = (string)button.CommandParameter;
 
             ((PasscodeViewModel)BindingContext).Passcode += commandParameter;
-
-            CheckPasscodeAsync();
         }
 
         private async void CheckPasscodeAsync()
         {
             bool isCorrect = IsCorrectAsync();
+
             if (isCorrect == true)
             {
-                App.IsLocked = Data.LockEntity.Unlocked;
+                await SetNewSettings();
                 await Navigation.PopAsync();
             }
         }
 
+        private static async Task SetNewSettings()
+        {
+            await Task.Run(() =>
+            {
+                App.IsLocked = Data.LockEntity.Unlocked;
+
+                SettingsData settings = SettingsGroupHandler.GroupSettings();
+                var fileHandler = SettingsFileHandler.GetInstance();
+                fileHandler.RewriteSettingsFile(settings);
+            });
+        }
+
         private bool IsCorrectAsync()
         {
-            if (((PasscodeViewModel)BindingContext).Passcode == "7518")
+            string realPasscode = ((OnPlatform<string>)Application.Current.Resources["PasscodeMD5"]).Default;
+            string passcode = Md5Alghorithm.CreateMD5(((PasscodeViewModel)BindingContext).Passcode);
+
+            if (passcode == realPasscode)
                 return true;
 
             return false;
@@ -61,6 +77,11 @@ namespace Notes.Views
 
                 ((PasscodeViewModel)BindingContext).Passcode = stringBuilder.ToString();
             });
+        }
+
+        private void ButtonEnter_Clicked(object sender, EventArgs e)
+        {
+            CheckPasscodeAsync();
         }
     }
 }

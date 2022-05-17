@@ -204,5 +204,10 @@ namespace Notes.Views
         {
             // FramePassocode.IsVisible = ((CheckBox)sender).IsChecked;
         }
+
+        private async void TapGestureRecognizerPasscode_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PasscodePage());
+        }
     }
 }
