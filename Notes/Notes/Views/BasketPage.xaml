@@ -11,6 +11,10 @@
         <local:BasketNoteViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="basketRemove.png" Clicked="Button_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <Frame x:Name="FrameLabel" HasShadow="True" CornerRadius="35" BackgroundColor="Transparent" 

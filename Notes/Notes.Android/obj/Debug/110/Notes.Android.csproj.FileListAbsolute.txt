@@ -630,3 +630,4 @@ D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawa
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\lockim.png
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\lightimagebackground.jpg
 D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\darkimagebackground.jpg
+D:\C#\Lessons\Xamarin projects\Notes\Notes\Notes.Android\obj\Debug\110\res\drawable\basketremove.png
