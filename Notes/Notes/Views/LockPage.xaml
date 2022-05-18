@@ -17,8 +17,7 @@
             <Label Text="Enter your passcode" FontSize="16" HorizontalOptions="CenterAndExpand"
                    TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
             <Entry x:Name="EntryPasscode" IsPassword="True" BackgroundColor="Transparent" Margin="10, 30, 10, 10" FontSize="30" Keyboard="Numeric" Text="{Binding Passcode}"
-                   HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource TextColorLight},
-                                                                                Dark={StaticResource TextColorDark}}" IsReadOnly="True"/>
+                   HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
 
             <Grid Margin="40, 10, 40, 10">
                 <Grid.RowDefinitions>
@@ -80,7 +79,15 @@
                         FontSize="24" Grid.Row="3" Grid.Column="2" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
             </Grid>
 
-            <Button Style="{StaticResource ButtonStyle}" Margin="15" Text="Enter" Clicked="ButtonEnter_Clicked"/>
+            <Button Style="{StaticResource ButtonStyle}" Margin="15" Text="Enter" Clicked="ButtonEnter_Clicked"
+                    BackgroundColor="{AppThemeBinding Light=#f5e85b, Dark=Black}"/>
+
+            <Label x:Name="LabelQuestion" Text="Forget passcode?" FontSize="22" Margin="15, 5, -5, 10" HorizontalOptions="Center"
+                    TextColor="{AppThemeBinding Dark=DodgerBlue, Light=DodgerBlue}" TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -8,25 +8,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Notes.Views.LockPage.xaml", "Views/LockPage.xaml", typeof(global::Notes.Views.LockPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Notes.Views.SetQuestionPage.xaml", "Views/SetQuestionPage.xaml", typeof(global::Notes.Views.SetQuestionPage))]
 
 namespace Notes.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\LockPage.xaml")]
-    public partial class LockPage : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\SetQuestionPage.xaml")]
+    public partial class SetQuestionPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryPasscode;
+        private global::Xamarin.Forms.Label labelQuestion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Label LabelQuestion;
+        private global::Notes.CustomItems.CustomEntry customEntryAnswer;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(LockPage));
-            EntryPasscode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryPasscode");
-            LabelQuestion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "LabelQuestion");
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SetQuestionPage));
+            labelQuestion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "labelQuestion");
+            customEntryAnswer = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Notes.CustomItems.CustomEntry>(this, "customEntryAnswer");
         }
     }
 }

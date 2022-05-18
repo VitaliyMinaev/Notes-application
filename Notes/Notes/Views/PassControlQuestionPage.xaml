@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Notes.ViewModels" 
+             xmlns:controls="clr-namespace:Notes.CustomItems"
+             x:Class="Notes.Views.PassControlQuestionPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                               Dark={StaticResource BackgroundColorDark}}">
+
+    <ContentPage.BindingContext>
+        <vm:PassQuestionViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightGreenColor">#2FA999</Color>
+            <Color x:Key="BorderColor">#D8D8D8</Color>
+
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#666666" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="44"></Setter>
+                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+            <Frame CornerRadius="7" BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark={StaticResource FrameBackgroundColorDark}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}">
+                <StackLayout>
+                    <Label Text="Answer the question: " FontSize="24" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="10"/>
+
+                    <Label Text="{Binding QuestionEntity.QuestionText}" FontSize="18" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="10"/>
+                    <Frame x:Name="FrameEntry" Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
+                       BackgroundColor="Transparent" Margin="10">
+                        <controls:CustomEntry x:Name="EntryAnswer" Style="{StaticResource EntryStyle}" VerticalOptions="Center"
+                                          TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
+                                          Margin="2, 0, 0, -5" FontSize="18" Keyboard="Text"
+                                          BackgroundColor="Transparent" HorizontalTextAlignment="Center"
+                                          Placeholder="Answer" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
+                    </Frame>
+
+                    <Button Style="{StaticResource ButtonStyle}" Text="Confirm" FontSize="18" Clicked="ButtonConfirm_Clicked" Margin="15"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

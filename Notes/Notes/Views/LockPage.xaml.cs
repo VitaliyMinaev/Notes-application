@@ -17,6 +17,35 @@ namespace Notes.Views
         public LockPage()
         {
             InitializeComponent();
+            SubscribeToMessageCenter();
+        }
+
+        private void SubscribeToMessageCenter()
+        {
+            MessagingCenter.Subscribe<PassControlQuestionPage, bool>(this, nameof(PassControlQuestionPage), async (page, isCorrect) =>
+            {
+                if(isCorrect == true)
+                    await GoOnMainPageFromQuestionPageAsync();
+            });
+        }
+        private async Task GoOnMainPageFromQuestionPageAsync()
+        {
+            await SetNewSettings();
+            await Navigation.PopAsync();
+            await Navigation.PopAsync();
+        }
+        private async Task GoOnMainPageAsync()
+        {
+            await SetNewSettings();
+            await Navigation.PopAsync();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (((OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Question"]).Default == "None")
+                LabelQuestion.IsVisible = false;
         }
 
         private void ButtonNumber_Clicked(object sender, EventArgs e)
@@ -32,10 +61,7 @@ namespace Notes.Views
             bool isCorrect = IsCorrectAsync();
 
             if (isCorrect == true)
-            {
-                await SetNewSettings();
-                await Navigation.PopAsync();
-            }
+                await GoOnMainPageAsync();
         }
 
         private static async Task SetNewSettings()
@@ -82,6 +108,11 @@ namespace Notes.Views
         private void ButtonEnter_Clicked(object sender, EventArgs e)
         {
             CheckPasscodeAsync();
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PassControlQuestionPage());
         }
     }
 }

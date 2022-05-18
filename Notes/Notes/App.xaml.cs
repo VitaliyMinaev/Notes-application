@@ -93,6 +93,7 @@ namespace Notes
                     SetDateFont(settings.Fonts.DateFont);
                     SetIsLocked(settings.Locked);
                     SetPasscode(settings.Passcode);
+                    SetQuestion(settings.QuestionAndAnswer);
                 }
             });
         }
@@ -128,6 +129,11 @@ namespace Notes
         {
             if(string.IsNullOrEmpty(passcode) == false)
                 ((OnPlatform<string>)Application.Current.Resources["PasscodeMD5"]).Default = passcode;
+        }
+        private void SetQuestion(QuestionEntity questionEntity)
+        {
+            ((OnPlatform<string>)Application.Current.Resources["Question"]).Default = questionEntity.QuestionText;
+            ((OnPlatform<string>)Application.Current.Resources["Answer"]).Default = questionEntity.AnswerText;
         }
 
         private SettingsData GetUserSettings()
@@ -166,6 +172,12 @@ namespace Notes
                     case "Passcode":
                         settingsData.Passcode = value;
                         break;
+                    case "Question":
+                        settingsData.QuestionAndAnswer.QuestionText = value;
+                        break;
+                    case "Answer":
+                        settingsData.QuestionAndAnswer.AnswerText = value;
+                        break;
                 }
             }
 
@@ -173,7 +185,7 @@ namespace Notes
         }
         private static Dictionary<string, string> SplitValues(string dataFromSettings)
         {
-            var list = dataFromSettings.Split(' ').ToList();
+            var list = dataFromSettings.Split('\n').ToList();
             var dictionary = new Dictionary<string, string>();
 
             foreach(var item in list)
@@ -213,18 +225,15 @@ namespace Notes
         {
             SetThemeAndAddHandler();
         }
-
         protected override void OnSleep()
         {
             SetThemeAndRemoveHandler();
         }
-
         private void SetThemeAndRemoveHandler()
         {
             XamarinTheme.SetTheme();
             RequestedThemeChanged -= App_RequestedThemeChanged;
         }
-
         protected override void OnResume()
         {
             SetThemeAndAddHandler();
@@ -235,7 +244,6 @@ namespace Notes
             XamarinTheme.SetTheme();
             RequestedThemeChanged += App_RequestedThemeChanged;
         }
-
         private void App_RequestedThemeChanged(object sender, AppThemeChangedEventArgs e)
         {
             MainThread.BeginInvokeOnMainThread(() =>

@@ -28,20 +28,25 @@ namespace Notes.Data
 
         public void RewriteSettingsFile(SettingsData settings)
         {
-            string dataInFile = $"CornerRadius:{settings.CornerRadius} " +
-                                        $"TitleFont:{settings.Fonts.TitleFont} " +
-                                        $"DateFont:{settings.Fonts.DateFont} " +
-                                        $"IsLocked:{settings.Locked} " +
-                                        $"Passcode:{settings.Passcode}";
+            string dataInFile = $"CornerRadius:{settings.CornerRadius}\n" +
+                                        $"TitleFont:{settings.Fonts.TitleFont}\n" +
+                                        $"DateFont:{settings.Fonts.DateFont}\n" +
+                                        $"IsLocked:{settings.Locked}\n" +
+                                        $"Passcode:{settings.Passcode}\n" +
+                                        $"Question:{settings.QuestionAndAnswer.QuestionText}\n" +
+                                        $"Answer:{settings.QuestionAndAnswer.AnswerText}";
 
             File.WriteAllText(Path.Combine(App.FolderPath, _fileName), dataInFile);
         }
         public void ClearSettingsFile()
         {
-            string dataInFile = $"CornerRadius:30 " +
-                                        $"TitleFont:Default " +
-                                        $"DateFont:Default " +
-                                        $"IsLocked:{LockEntity.Undefined}";
+            string dataInFile = $"CornerRadius:30\n" +
+                                        $"TitleFont:Default\n" +
+                                        $"DateFont:Default\n" +
+                                        $"IsLocked:{LockEntity.Undefined}\n" +
+                                        $"Passcode:None\n" +
+                                        $"Question:None\n" +
+                                        $"Answer:None";
 
             File.WriteAllText(Path.Combine(App.FolderPath, _fileName), dataInFile);
         }

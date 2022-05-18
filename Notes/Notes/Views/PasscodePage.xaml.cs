@@ -2,6 +2,7 @@
 using Notes.Hashing;
 using Notes.ViewModels;
 using System;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +14,19 @@ namespace Notes.Views
         public PasscodePage()
         {
             InitializeComponent();
+            ExistPasscode();
+        }
+
+        private void ExistPasscode()
+        {
+            if (App.IsLocked == LockEntity.Undefined)
+            {
+                ((DisplayPasscodeViewModel)BindingContext).IsChecked = false;
+            }
+            else
+            {
+                ((DisplayPasscodeViewModel)BindingContext).IsChecked = true;
+            }
         }
 
         private void ButtonPasscode_Clicked(object sender, EventArgs e)
@@ -33,9 +47,9 @@ namespace Notes.Views
             return true;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void TapGestureRecognizerManageQuestion_Tapped(object sender, EventArgs e)
         {
-            ((DisplayPasscodeViewModel)BindingContext).IsChecked = !((DisplayPasscodeViewModel)BindingContext).IsChecked;
+            await Navigation.PushAsync(new SetQuestionPage());
         }
     }
 }

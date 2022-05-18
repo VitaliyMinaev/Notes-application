@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:Notes.CustomItems"
+             xmlns:vm="clr-namespace:Notes.ViewModels"
+             x:Class="Notes.Views.SetQuestionPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
+                                               Dark={StaticResource BackgroundColorDark}}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightGreenColor">#2FA999</Color>
+            <Color x:Key="BorderColor">#D8D8D8</Color>
+
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#666666" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="44"></Setter>
+                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:AnswerQuestionViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10">
+            <Frame CornerRadius="7" BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark={StaticResource FrameBackgroundColorDark}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}">
+                <StackLayout>
+                    <Label x:Name="labelQuestion" Text="What is the name of your favorite sports team or player?" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
+                           Margin="5" FontSize="22" HorizontalOptions="CenterAndExpand"/>
+
+                    <Frame Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
+                       BackgroundColor="Transparent" Margin="5, 10, 5, 5">
+                        <controls:CustomEntry x:Name="customEntryAnswer" Style="{StaticResource EntryStyle}" 
+                                          TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
+                                          Margin="2, 0, 0, -5" FontSize="18" Keyboard="Text" Text="{Binding Answer}"
+                                          BackgroundColor="Transparent" HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                          Placeholder="Answer" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
+                    </Frame>
+
+                    <Button Style="{StaticResource ButtonStyle}" Margin="10" Text="Save" Clicked="Button_Clicked"  FontSize="14"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
