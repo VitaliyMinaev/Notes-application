@@ -4,8 +4,9 @@
              xmlns:controls="clr-namespace:Notes.CustomItems"
              xmlns:vm="clr-namespace:Notes.ViewModels"
              x:Class="Notes.Views.SetQuestionPage"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
-                                               Dark={StaticResource BackgroundColorDark}}">
+             Title="Control qustion"
+             BackgroundImageSource="{AppThemeBinding Light=BackgroundImage.jfif, Dark=darkImageBackGround.jpg}"
+             BackgroundColor="Transparent">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -35,7 +36,20 @@
     
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" Margin="10">
-            <Frame CornerRadius="7" BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark={StaticResource FrameBackgroundColorDark}}"
+            
+            <StackLayout x:Name="StackHasQuestion" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10, 1, 20, 10">
+                <Label Text="You have answered control question" FontSize="22" Margin="5" VerticalOptions="Center"
+                        TextColor="{AppThemeBinding Dark={StaticResource TextColorDark}, Light={StaticResource TextColorLight}}"/>
+                <Image Source="checkmark.png" WidthRequest="60" HeightRequest="60"/>
+            </StackLayout>
+
+            <StackLayout x:Name="StackDoesntHaveQuestion" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10, 1, 20, 10">
+                <Label Text="You don't answer control question" FontSize="22" Margin="5" VerticalOptions="Center"
+                        TextColor="{AppThemeBinding Dark={StaticResource TextColorDark}, Light={StaticResource TextColorLight}}"/>
+                <Image Source="crossmark.png" WidthRequest="60" HeightRequest="60"/>
+            </StackLayout>
+
+            <Frame CornerRadius="7" BackgroundColor="Transparent"
                    BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}">
                 <StackLayout>
                     <Label x:Name="labelQuestion" Text="What is the name of your favorite sports team or player?" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
@@ -50,9 +64,17 @@
                                           Placeholder="Answer" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
 
-                    <Button Style="{StaticResource ButtonStyle}" Margin="10" Text="Save" Clicked="Button_Clicked"  FontSize="14"/>
+                    <Button Style="{StaticResource ButtonStyle}" Margin="10" Text="Save" Clicked="Button_Clicked"  FontSize="14"
+                            BackgroundColor="{AppThemeBinding Light=#bbf768, Dark=Black}"/>
                 </StackLayout>
             </Frame>
+
+            <Label Text="Turn off the control question" FontSize="22" Margin="10, 25, -5, 10" HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Dark=DodgerBlue, Light=DodgerBlue}" TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

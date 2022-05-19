@@ -36,33 +36,39 @@
 
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal"  IsVisible="{Binding IsChecked}" HorizontalOptions="CenterAndExpand" Margin="10, 1, 20, 10">
+                <Label Text="You already have passcode" FontSize="22" Margin="5" VerticalOptions="Center"
+                        TextColor="{AppThemeBinding Dark={StaticResource TextColorDark}, Light={StaticResource TextColorLight}}"/>
+                <Image Source="checkmark.png" WidthRequest="60" HeightRequest="60"/>
+            </StackLayout>
+            
             <Frame Margin="10" WidthRequest="330" CornerRadius="7" IsVisible="{Binding IsChecked}"
                    BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark={StaticResource FrameBackgroundColorDark}}"
                    BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight},Dark={StaticResource FrameBorderColorDark}}">
                 <StackLayout>
                     <Label Text="Change your passcode" FontSize="22" Margin="5" VerticalOptions="Center"
                         TextColor="{AppThemeBinding Dark={StaticResource TextColorDark}, Light={StaticResource TextColorLight}}"/>
-                    <Frame Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
+                    <Frame x:Name="FrameOldPasscode" Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
                        BackgroundColor="Transparent" Margin="5">
-                        <controls:CustomEntry Style="{StaticResource EntryStyle}" 
+                        <controls:CustomEntry x:Name="EntryOldPasscode" Style="{StaticResource EntryStyle}" 
                                           TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
                                           Margin="2, 0, 0, -5" FontSize="18"
                                           Keyboard="Numeric"
                                           BackgroundColor="Transparent" HorizontalTextAlignment="Center"
                                           Placeholder="Old passcode" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
-                    <Frame Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
+                    <Frame x:Name="FrameNewPasscode" Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
                        BackgroundColor="Transparent" Margin="5">
-                        <controls:CustomEntry Style="{StaticResource EntryStyle}" 
+                        <controls:CustomEntry x:Name="EntryPasscodeNew" Style="{StaticResource EntryStyle}" 
                                           TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
                                           Margin="2, 0, 0, -5" FontSize="18"
                                           Keyboard="Numeric"
                                           BackgroundColor="Transparent" HorizontalTextAlignment="Center"
                                           Placeholder="New passcode" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
-                    <Frame Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
+                    <Frame x:Name="FrameConfirmNewPasscode" Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
                        BackgroundColor="Transparent" Margin="5">
-                        <controls:CustomEntry Style="{StaticResource EntryStyle}" 
+                        <controls:CustomEntry x:Name="EntryConfirmPasscodeNew" Style="{StaticResource EntryStyle}" 
                                           TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
                                           Margin="2, 0, 0, -5" FontSize="18"
                                           Keyboard="Numeric"
@@ -70,9 +76,15 @@
                                           Placeholder="Confirm new passcode" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
 
-                    <Button Style="{StaticResource ButtonStyle}" Text="Change passcode" FontSize="14" Margin="10"/>
+                    <Button Style="{StaticResource ButtonStyle}" Text="Change passcode" FontSize="14" Margin="10" Clicked="ButtonPasscodeChange_Clicked"/>
                 </StackLayout>
             </Frame>
+
+            <StackLayout Orientation="Horizontal"  IsVisible="{Binding IsChecked, Converter={convertors:InverseBooleanConverter}}" HorizontalOptions="CenterAndExpand" Margin="10, 1, 20, 10">
+                <Label Text="You don't have a passcode" FontSize="22" Margin="5" VerticalOptions="Center"
+                        TextColor="{AppThemeBinding Dark={StaticResource TextColorDark}, Light={StaticResource TextColorLight}}"/>
+                <Image Source="crossmark.png" WidthRequest="60" HeightRequest="60"/>
+            </StackLayout>
 
             <Frame Margin="10" CornerRadius="7" WidthRequest="330" IsVisible="{Binding IsChecked, Converter={convertors:InverseBooleanConverter}}"
                    BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark={StaticResource FrameBackgroundColorDark}}"
@@ -90,9 +102,9 @@
                                           BackgroundColor="Transparent" HorizontalTextAlignment="Center"
                                           Placeholder="Passcode" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
-                    <Frame Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
+                    <Frame x:Name="ConfirmPasscodeFrame" Style="{StaticResource FrameStyle}" BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}"
                        BackgroundColor="Transparent" Margin="5, 10, 5, 5">
-                        <controls:CustomEntry Style="{StaticResource EntryStyle}" 
+                        <controls:CustomEntry x:Name="ConfirmPasscodeEntry" Style="{StaticResource EntryStyle}" 
                                           TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"
                                           Margin="2, 0, 0, -5" FontSize="18"
                                           Keyboard="Numeric"
@@ -100,14 +112,14 @@
                                           Placeholder="Confirm passcode" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
 
-                    <Button Style="{StaticResource ButtonStyle}" Text="Set passcode" FontSize="14" Margin="10" Clicked="ButtonPasscode_Clicked"/>
+                    <Button Style="{StaticResource ButtonStyle}" Text="Set passcode" FontSize="14" Margin="10" Clicked="ButtonPasscodeSave_Clicked"/>
                 </StackLayout>
             </Frame>
             
             <Label Text="Turn off the passcode" FontSize="22" Margin="15, 5, -5, 10" HorizontalOptions="Center" IsVisible="{Binding IsChecked}"
                    TextColor="{AppThemeBinding Dark=DodgerBlue, Light=DodgerBlue}" TextDecorations="Underline">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer/>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_TappedTurnOffPasscode"/>
                 </Label.GestureRecognizers>
             </Label>
 

@@ -73,7 +73,7 @@
 
                 <Button Text="0" FontSize="24" BorderColor="Transparent" BackgroundColor="Transparent"
                         WidthRequest="60" HeightRequest="60" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center"
-                        Grid.Row="3" Grid.Column="1" Clicked="ButtonNumber_Clicked" CommandParameter="9"
+                        Grid.Row="3" Grid.Column="1" Clicked="ButtonNumber_Clicked" CommandParameter="0"
                         TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
                 <Button Text="⌫" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ButtonRemove_Clicked" BackgroundColor="Transparent"
                         FontSize="24" Grid.Row="3" Grid.Column="2" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>

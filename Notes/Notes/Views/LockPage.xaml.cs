@@ -30,20 +30,24 @@ namespace Notes.Views
         }
         private async Task GoOnMainPageFromQuestionPageAsync()
         {
-            await SetNewSettings();
+            SetNewSettings();
             await Navigation.PopAsync();
             await Navigation.PopAsync();
         }
         private async Task GoOnMainPageAsync()
         {
-            await SetNewSettings();
+            SetNewSettings();
             await Navigation.PopAsync();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            ShowOrHideQuestionLabel();
+        }
 
+        private void ShowOrHideQuestionLabel()
+        {
             if (((OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["Question"]).Default == "None")
                 LabelQuestion.IsVisible = false;
         }
@@ -64,16 +68,13 @@ namespace Notes.Views
                 await GoOnMainPageAsync();
         }
 
-        private static async Task SetNewSettings()
+        private static void SetNewSettings()
         {
-            await Task.Run(() =>
-            {
-                App.IsLocked = Data.LockEntity.Unlocked;
+            App.IsLocked = Data.LockEntity.Unlocked;
 
-                SettingsData settings = SettingsGroupHandler.GroupSettings();
-                var fileHandler = SettingsFileHandler.GetInstance();
-                fileHandler.RewriteSettingsFile(settings);
-            });
+            SettingsData settings = SettingsGroupHandler.GroupSettings();
+            var fileHandler = SettingsFileHandler.GetInstance();
+            fileHandler.RewriteSettingsFile(settings);
         }
 
         private bool IsCorrectAsync()

@@ -10,10 +10,16 @@
         <StackLayout>
             <Frame CornerRadius="25" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" Margin="20"
                    BorderColor="{AppThemeBinding Light={StaticResource BorderColorLight}, Dark={StaticResource BorderColorDark}}">
-                <Label Text="Made by Vitaliy" FontSize="24"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <StackLayout>
+                    <Label FontSize="18" HorizontalOptions="CenterAndExpand" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="0, 10, 0, 10" FontFamily="PTFerif"
+                           Text="The application was created on the 'Xamarin forms' framework in the C# programming language. The sqlite library and the standard System.IO library (for working with .txt files) were used as information storage."/>
+                    <Label FontSize="18" HorizontalOptions="CenterAndExpand" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="0, 10, 0, 10" FontFamily="PTFerif"
+                           Text="Also, the standard .Net library System.Security.Cryptography was used to encode secret information."/>
+                    <Label FontSize="18" HorizontalOptions="CenterAndExpand" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="0, 10, 0, 10" FontFamily="PTFerif"
+                           Text="This application was developed for educational purposes in the subject of System Programming (2022 second semester)."/>
+                    <Label FontSize="18" HorizontalOptions="EndAndExpand" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="0, 10, 0, 10" FontFamily="PTFerif"
+                           Text="Bezugly Vitaly, KIUKI-20-1"/>
+                </StackLayout>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

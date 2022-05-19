@@ -17,12 +17,44 @@ namespace Notes.Views {
     public partial class PasscodePage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Frame FrameOldPasscode;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Notes.CustomItems.CustomEntry EntryOldPasscode;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Frame FrameNewPasscode;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Notes.CustomItems.CustomEntry EntryPasscodeNew;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Frame FrameConfirmNewPasscode;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Notes.CustomItems.CustomEntry EntryConfirmPasscodeNew;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Notes.CustomItems.CustomEntry EntryPassode;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Frame ConfirmPasscodeFrame;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Notes.CustomItems.CustomEntry ConfirmPasscodeEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(PasscodePage));
+            FrameOldPasscode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Frame>(this, "FrameOldPasscode");
+            EntryOldPasscode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Notes.CustomItems.CustomEntry>(this, "EntryOldPasscode");
+            FrameNewPasscode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Frame>(this, "FrameNewPasscode");
+            EntryPasscodeNew = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Notes.CustomItems.CustomEntry>(this, "EntryPasscodeNew");
+            FrameConfirmNewPasscode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Frame>(this, "FrameConfirmNewPasscode");
+            EntryConfirmPasscodeNew = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Notes.CustomItems.CustomEntry>(this, "EntryConfirmPasscodeNew");
             EntryPassode = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Notes.CustomItems.CustomEntry>(this, "EntryPassode");
+            ConfirmPasscodeFrame = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Frame>(this, "ConfirmPasscodeFrame");
+            ConfirmPasscodeEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Notes.CustomItems.CustomEntry>(this, "ConfirmPasscodeEntry");
         }
     }
 }

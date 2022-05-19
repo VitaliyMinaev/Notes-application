@@ -2,7 +2,6 @@
 using Notes.Hashing;
 using Notes.ViewModels;
 using System;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +13,21 @@ namespace Notes.Views
         public SetQuestionPage()
         {
             InitializeComponent();
+            ShowOrHideControls();
+        }
+
+        private void ShowOrHideControls()
+        {
+            if (((OnPlatform<string>)Application.Current.Resources["Answer"]).Default == "None")
+            {
+                StackDoesntHaveQuestion.IsVisible = true;
+                StackHasQuestion.IsVisible = false;
+            }
+            else
+            {
+                StackDoesntHaveQuestion.IsVisible = false;
+                StackHasQuestion.IsVisible = true;
+            }
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -28,18 +42,27 @@ namespace Notes.Views
             await Navigation.PopAsync();
         }
 
-        private async void WriteQuestionInSettings(QuestionEntity answer)
+        private void WriteQuestionInSettings(QuestionEntity answer)
         {
-            await Task.Run(() =>
-            {
-                ((OnPlatform<string>)Application.Current.Resources["Question"]).Default = answer.QuestionText;
-                ((OnPlatform<string>)Application.Current.Resources["Answer"]).Default = answer.AnswerText;
+            ((OnPlatform<string>)Application.Current.Resources["Question"]).Default = answer.QuestionText;
+            ((OnPlatform<string>)Application.Current.Resources["Answer"]).Default = answer.AnswerText;
 
-                SettingsData settings = SettingsGroupHandler.GroupSettings(answer);
+            SettingsData settings = SettingsGroupHandler.GroupSettings(answer);
 
-                var fileHandler = SettingsFileHandler.GetInstance();
-                fileHandler.RewriteSettingsFile(settings);
-            });
+            var fileHandler = SettingsFileHandler.GetInstance();
+            fileHandler.RewriteSettingsFile(settings);
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            ((OnPlatform<string>)Application.Current.Resources["Question"]).Default = "None";
+            ((OnPlatform<string>)Application.Current.Resources["Answer"]).Default = "None";
+
+            ShowOrHideControls();
+
+            SettingsData settings = SettingsGroupHandler.GroupSettings();
+            var fileHandler = SettingsFileHandler.GetInstance();
+            fileHandler.RewriteSettingsFile(settings);
         }
     }
 }

@@ -4,8 +4,9 @@
              xmlns:vm="clr-namespace:Notes.ViewModels" 
              xmlns:controls="clr-namespace:Notes.CustomItems"
              x:Class="Notes.Views.PassControlQuestionPage"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, 
-                                               Dark={StaticResource BackgroundColorDark}}">
+             Title="Answer control question"
+             BackgroundImageSource="{AppThemeBinding Light=BackgroundImage.jfif, Dark=darkImageBackGround.jpg}"
+             BackgroundColor="Transparent">
 
     <ContentPage.BindingContext>
         <vm:PassQuestionViewModel/>
@@ -34,7 +35,7 @@
     
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
-            <Frame CornerRadius="7" BackgroundColor="{AppThemeBinding Light={StaticResource FrameBackgroundColorLight}, Dark={StaticResource FrameBackgroundColorDark}}"
+            <Frame CornerRadius="7" BackgroundColor="Transparent"
                    BorderColor="{AppThemeBinding Light={StaticResource FrameBorderColorLight}, Dark={StaticResource FrameBorderColorDark}}">
                 <StackLayout>
                     <Label Text="Answer the question: " FontSize="24" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" Margin="10"/>
@@ -49,7 +50,8 @@
                                           Placeholder="Answer" PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#6C7A89}"/>
                     </Frame>
 
-                    <Button Style="{StaticResource ButtonStyle}" Text="Confirm" FontSize="18" Clicked="ButtonConfirm_Clicked" Margin="15"/>
+                    <Button Style="{StaticResource ButtonStyle}" Text="Confirm" FontSize="18" Clicked="ButtonConfirm_Clicked" Margin="15"
+                            BackgroundColor="{AppThemeBinding Light=Yellow, Dark=Black}"/>
                 </StackLayout>
             </Frame>
         </StackLayout>
